@@ -45,18 +45,22 @@ export default class CabBookingApp extends Component {
         <Text style={styles.welcome}>
           Hello {this.state.name}
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
+
+        <Text style={styles.company}>
+          You are working in{" "}
+              <Text style={styles.company_text}>
+                {this.state.company}
+              </Text>
         </Text>
         
-        <Text>
-          {this.state.getLanguagesList} {'\n'}
-          Comapany name : {this.state.company}
+        
+        <Text style={styles.instruction}>
+          Learn how to code, its optimization etc. {"\n"}
+          Work hard and enjoy.
         </Text>
-        <Text style={styles.instructions2}>
-          &lt;Instructions&gt;,{"\n"}
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
+
+        <Text style={styles.quote}>
+              Everything that teaches you something is your teacher.
         </Text>
       </View>
     );
@@ -75,15 +79,27 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
-  instructions: {
+  company: {
     textAlign: 'center',
     color: 'green',
     marginBottom: 5,
   },
-  instructions2:{
+  instruction:{
     textAlign:"center",
     color:"navy",
     margin:5,
+  },
+  company_text:{
+    textAlign:"center",
+    color:"gray",
+    margin:1,
+    fontWeight:"bold",
+  },
+  quote:{
+    margin:5,
+    color:"green",
+    backgroundColor:"pink",
+    color:"red",
   }
 
 });

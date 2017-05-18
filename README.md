@@ -4,6 +4,50 @@ A JavaScript framework for building native mobile applications(apps).
 
 [Getting started](https://facebook.github.io/react-native/docs/getting-started.html)
 
+### Instructions
+
+To get started, edit index.android.js/index.ios.js
+Press **Cmd+R** to reload
+**Cmd+D** or shake for dev menu
+
+### CSS properties
+
+margin, fontSize, fontWeight, backgroundColor, alignItems, justifyContent, flex, color, textAlign
+[more...](https://facebook.github.io/react-native/docs/flexbox.html)
+
+```css
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  company: {
+    textAlign: 'center',
+    color: 'green',
+    marginBottom: 5,
+  },
+  instruction:{
+    textAlign:"center",
+    color:"navy",
+    margin:5,
+  },
+  company_text:{
+    textAlign:"center",
+    color:"gray",
+    margin:1,
+    fontWeight:"bold",
+  }
+
+});
+```
+
 ### Prerequisites
 
 1) Basic React JS knowledge
@@ -224,4 +268,4 @@ Visit [here](http://stackoverflow.com/questions/28296237/set-android-home-enviro
 admins-MacBook-Pro-3:~ admin$ echo $ANDROID_HOME
 /Users/admin/Library/Android/sdk/
 ```
-
+# 
