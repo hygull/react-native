@@ -15,28 +15,19 @@ import {
   StyleSheet,
   Text,
   Image,
-  View
+  View,
+  TextInput,
 } from 'react-native';
+import ImageSlider from "react-native-image-slider";
+import { Container, Header, Button, Icon, Title, Left,Body, Right } from "native-base"
 
 export default class CabBookingApp extends Component {
 
   constructor() {
     super() //Calling the constructor of parent class
     this.state = {
-          name : "Rishikesh Agrawani",
+          name : "User",
           company : "Offlinetrend solutions pvt ltd",
-          languages : ["C", "C++", "Python", "Golang", "TypeScript", "JavaScript", "HTML", "CSS"],
-          // getLanguagesList : () => {
-          //       var s = "";
-          //       for(var i; i<this.languages.length; i++) {
-          //         if(i==this.languages.length-1){
-          //             s += this.languages[i] + "."
-          //         }else{
-          //             s += this.languages[i]+","
-          //         }
-          //       }
-          //       return s;
-          //     }
     }
   }
 
@@ -47,31 +38,46 @@ export default class CabBookingApp extends Component {
     }
 
     return (
+
+      <Container>
+           
+        
+      
       <View style={styles.container}>
         <Text style={{fontSize:20, color:"black", marginTop:40}}> Welcome to </Text>
-        <Text style={{fontWeight:"bold", color:"green", fontSize:30}}>CabBooking Service</Text>
-        <Image source={require("./img/car.jpg")} style={{height:200, width:400}}/>
-        <Text style={styles.welcome}>
-          Hello {this.state.name}
-        </Text>
-
+        
+        <Text style={{fontWeight:"bold", color:"green", fontSize:30, marginBottom:1}}>CabBooking Service</Text>
+        
         <Text style={styles.company}>
-          You are working in{" "}
+          Developed at{" "}
               <Text style={styles.company_text}>
                 {this.state.company}
               </Text>
         </Text>
+        <Image source={require("./img/car.jpg")} style={{height:200, width:375}}/>
         
+       
+        
+        <Text style={styles.welcome}>
+            Hello {this.state.name} {" "}
+            <Text style={{color:"gray", fontWeight:"bold"}}>
+                Enjoy this app 
+            </Text>  
+        </Text>
         
         <Text style={styles.instruction}>
-          Learn how to code, its optimization etc. {"\n"}
-          Work hard and enjoy.
+          It is nice, concise & easy to use. {"\n"}
+          It is excellent.
         </Text>
 
+        <TextInput style={{height:20, margin:1, textAlign:"center", borderWidth:1, borderColor:"green",padding:5, height:30}} placeholder="Enter your location" />
+
+        
         <Text style={styles.quote}>
-              Everything that teaches you something is your teacher.
+              Everything that teaches you something is{"\n"} your teacher.
         </Text>
       </View>
+      </Container>
     );
   }
 }
@@ -81,7 +87,7 @@ const styles = StyleSheet.create({
     // flex: 1,
     // justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#e6fff2',
   },
   welcome: {
     fontSize: 20,
@@ -107,8 +113,11 @@ const styles = StyleSheet.create({
   quote:{
     margin:5,
     color:"green",
-    backgroundColor:"gray",
-    color:"red",
+    backgroundColor:"#f2f2f2",
+    color:"#3333cc",
+    textAlign:"center",
+    padding:10,
+    fontFamily:"Verdana"
   }
 
 });

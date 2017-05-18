@@ -1,0 +1,34 @@
+# React native component - Image
+
+```javascript
+let picture = {
+	uri:"https://www.pic.com/images/car.jpg",
+}
+```
+
+```
+	<Image source={pic} style={{height:100, width:100}} />
+```
+
+Or
+
+```
+    <Image source={require("./img/car.jpg")} style={{height:200, width:400}} />
+```
+
+# Check it
+
+```
+ <ImageSlider images={
+          [
+            "http://placeimg.com/640/480/any",
+            'http://placeimg.com/640/480/any',
+            'http://placeimg.com/640/480/any'
+          ]
+        } />
+```
+
+```
+    <TextInput style={{height:20, margin:1, textAlign:"center", borderWidth:1, borderColor:"green",padding:5, height:30}} placeholder="Enter your location" />
+
+```
