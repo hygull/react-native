@@ -4,6 +4,18 @@ A JavaScript framework for building native mobile applications(apps).
 
 [Getting started](https://facebook.github.io/react-native/docs/getting-started.html)
 
+[ES6 or ECMASCRIPT 2015](https://babeljs.io/learn-es2015/)
+
+### React Native Components
+
+Image
+Text
+TextInput
+
+### Props 
+
+Most components can be customized when they are created, with different parameters. These creation parameters are called props.
+
 ### Instructions
 
 To get started, edit index.android.js/index.ios.js
