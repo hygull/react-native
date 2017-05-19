@@ -12,18 +12,23 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
-  StyleSheet,
   Text,
   Image,
   View,
   TextInput,
-  ListView
+  ListView,
+  Switch,
+  StyleSheet
 } from 'react-native';
 
 import ImageSlider from "react-native-image-slider";
 import { Container, Header, Button, Icon, Title, Left,Body, Right } from "native-base"
+
+// import styles from "./MyStyles/Styles"
 import TextBlueComponent from "./MyComponents/TextBlueComponent/TextBlueComponent"
 import ListPresentationalComponent from "./MyComponents/ListPresentationalComponent/ListPresentationalComponent"
+import SwitchComponent from "./MyComponents/SwitchComponent/SwitchComponent"
+import QuoteComponent from "./MyComponents/QuoteComponent/QuoteComponent"
 
 export default class CabBookingApp extends Component {
     constructor(props) {
@@ -32,7 +37,7 @@ export default class CabBookingApp extends Component {
             const ds = new ListView.DataSource({rowHasChanged:(r1,r2) => r1!==r2})
             
             this.state = {
-                dataSource: ds.cloneWithRows(["Mukesh", "Mukundh", "Sandeep", "Darshan", "Surendra", "Rishikesh" ]       ),
+                dataSource: ds.cloneWithRows(["Rogert", "Michaelson", "GrowFill"]       ),
                 name : "User",
                 company : "Offlinetrend solutions pvt ltd",
             }
@@ -81,16 +86,16 @@ export default class CabBookingApp extends Component {
                           It is excellent.
                         </Text>
 
-                        <TextInput style={{height:20, margin:1, textAlign:"center", borderWidth:1, borderColor:"green",padding:5, height:30}} placeholder="Enter your location" />
+                        <TextInput style={{height:20, marginBottom:1, textAlign:"center", borderWidth:1, borderColor:"green",padding:5, height:30}} placeholder="Enter your location" />
 
+                        <QuoteComponent />
                         
-                        <Text style={styles.quote}>
-                              Everything that teaches you something is{"\n"} your teacher.
-                        </Text>
                       </View>
 
                       <TextBlueComponent />
 
+                      <Text style={styles.activeMessage}>Are you Active? <SwitchComponent /></Text>
+                      
                       <Text style={{color:"orange", fontSize:10, textAlign:"center", flexDirection:"row"}}>Employees of Offlinetrend/Dotrixs</Text>
 
                       <ListPresentationalComponent dataSource={this.state.dataSource}/>
@@ -103,7 +108,7 @@ export default class CabBookingApp extends Component {
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
-    // justifyContent: 'center',
+    //justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#e6fff2',
   },
@@ -128,13 +133,11 @@ const styles = StyleSheet.create({
     margin:1,
     fontWeight:"bold",
   },
-  quote:{
-    margin:5,
-    color:"green",
-    backgroundColor:"white",
-    textAlign:"center",
-    padding:10,
-    fontFamily:"Verdana"
+  activeMessage:{
+    color:"gray",
+    fontSize:35,
+    fontWeight:"bold",
+    paddingLeft:5
   }
 
 });
