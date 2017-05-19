@@ -1,0 +1,29 @@
+# (1) Do not do this otherwise(StaticRenderer.render():A Valid React element must be returned)
+
+```typescript
+				<ListView
+					dataSource = {props.dataSource} 
+					renderRow = {
+						(rowData) => {
+							<Text style={styles.users}>
+									{rowData}
+							</Text>	 
+						}
+					}
+				/>
+```
+
+# Do this (by removing the curly braces)
+
+```typescript
+				<ListView
+					dataSource = {props.dataSource} 
+					renderRow = {
+						(rowData) => 
+							<Text style={styles.users}>
+									{rowData}
+							</Text>	 
+						
+					}
+				/>
+```
