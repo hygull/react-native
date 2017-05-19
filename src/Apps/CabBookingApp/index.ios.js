@@ -20,6 +20,7 @@ import {
 } from 'react-native';
 import ImageSlider from "react-native-image-slider";
 import { Container, Header, Button, Icon, Title, Left,Body, Right } from "native-base"
+import TextBlueComponent from "./MyComponents/TextBlueComponent/TextBlueComponent"
 
 export default class CabBookingApp extends Component {
 
@@ -77,6 +78,8 @@ export default class CabBookingApp extends Component {
               Everything that teaches you something is{"\n"} your teacher.
         </Text>
       </View>
+
+      <TextBlueComponent />
       </Container>
     );
   }
@@ -113,8 +116,7 @@ const styles = StyleSheet.create({
   quote:{
     margin:5,
     color:"green",
-    backgroundColor:"#f2f2f2",
-    color:"#3333cc",
+    backgroundColor:"white",
     textAlign:"center",
     padding:10,
     fontFamily:"Verdana"
