@@ -29,6 +29,7 @@ import TextBlueComponent from "./MyComponents/TextBlueComponent/TextBlueComponen
 import ListPresentationalComponent from "./MyComponents/ListPresentationalComponent/ListPresentationalComponent"
 import SwitchComponent from "./MyComponents/SwitchComponent/SwitchComponent"
 import QuoteComponent from "./MyComponents/QuoteComponent/QuoteComponent"
+import VideoGrabbingRestComponent from "./MyComponents/VideoGrabbingRestComponent/VideoGrabbingRestComponent"
 
 export default class CabBookingApp extends Component {
     constructor(props) {
@@ -100,6 +101,7 @@ export default class CabBookingApp extends Component {
 
                       <ListPresentationalComponent dataSource={this.state.dataSource}/>
 
+                      <VideoGrabbingRestComponent />
                   </Container>      
         );
     }
