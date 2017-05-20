@@ -18,7 +18,7 @@ import {
   TextInput,
   ListView,
   Switch,
-  StyleSheet
+  StyleSheet,
 } from 'react-native';
 
 import ImageSlider from "react-native-image-slider";
@@ -30,13 +30,14 @@ import ListPresentationalComponent from "./MyComponents/ListPresentationalCompon
 import SwitchComponent from "./MyComponents/SwitchComponent/SwitchComponent"
 import QuoteComponent from "./MyComponents/QuoteComponent/QuoteComponent"
 import VideoGrabbingRestComponent from "./MyComponents/VideoGrabbingRestComponent/VideoGrabbingRestComponent"
+import DataGrabbingRestComponent from "./MyComponents/DataGrabbingRestComponent/DataGrabbingRestComponent"
 
 export default class CabBookingApp extends Component {
     constructor(props) {
             super(props)
             console.log("Super get called.")
             const ds = new ListView.DataSource({rowHasChanged:(r1,r2) => r1!==r2})
-            
+           
             this.state = {
                 dataSource: ds.cloneWithRows(["Rogert", "Michaelson", "GrowFill"]       ),
                 name : "User",
@@ -72,9 +73,7 @@ export default class CabBookingApp extends Component {
                               </Text>
                         </Text>
                         <Image source={require("./img/car.jpg")} style={{height:200, width:375}}/>
-                        
-                       
-                        
+                                            
                         <Text style={styles.welcome}>
                             Hello {this.state.name} {" "}
                             <Text style={{color:"gray", fontWeight:"bold"}}>
@@ -101,7 +100,8 @@ export default class CabBookingApp extends Component {
 
                       <ListPresentationalComponent dataSource={this.state.dataSource}/>
 
-                      <VideoGrabbingRestComponent />
+                     
+                      <DataGrabbingRestComponent />
                   </Container>      
         );
     }

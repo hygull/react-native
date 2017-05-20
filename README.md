@@ -6,6 +6,10 @@ A JavaScript framework for building native mobile applications(apps).
 
 [ES6 or ECMASCRIPT 2015](https://babeljs.io/learn-es2015/)
 
+[DialogBox](https://www.npmjs.com/package/react-native-dialogbox)
+
+I have listed most of the errors that I faced [here](./docs/do-not-do-this.mdown). Just check it.
+
 ### React Native Components
 
 Image

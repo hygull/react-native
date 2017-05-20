@@ -60,3 +60,15 @@ import {StyleSheet} from "react-native"
 		}
 	}
 ```
+
+# Do not do this otherwise(Cannot call a class as a function)
+
+```typescript
+		const ds =  ListView.DataSource({rowHasChanged: (r1, r2) => r1!==r2})
+```
+
+# Do this
+
+```typescript
+		const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1!==r2})
+```

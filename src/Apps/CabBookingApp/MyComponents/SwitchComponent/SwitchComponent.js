@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-import {Switch, AppRegistry, StyleSheet} from "react-native"
+import {Switch, AppRegistry, StyleSheet, AlertIOS} from "react-native"
 
 export default class SwitchComponent extends Component {
 
@@ -10,6 +10,11 @@ export default class SwitchComponent extends Component {
 		}
 	}
 	onSwitchChange(value){
+		if(value){
+			AlertIOS.alert("Switch ON")
+		}else{
+			AlertIOS.alert("Switch OFF")
+		}
 		this.setState(
 			{
 				switchValue:value
