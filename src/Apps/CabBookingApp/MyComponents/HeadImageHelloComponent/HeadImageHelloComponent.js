@@ -14,6 +14,7 @@ export default class HeadImageHelloComponent extends Component {
           super()
           this.state = {
               company : "Offlinetrend solutions pvt ltd",
+              name : "User",
           }
       }
 

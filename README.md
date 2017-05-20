@@ -12,6 +12,11 @@ I have listed most of the errors that I faced [here](./docs/do-not-do-this.mdown
 
 You can also check list of great linkes [here](./docs/links.md)
 
+| program/technology | version |
+| ------------------ | ------- |
+| node | 7.10.0 |
+| npm | 4.2.0 |
+
 ### React Native Components
 
 Image
@@ -286,4 +291,4 @@ Visit [here](http://stackoverflow.com/questions/28296237/set-android-home-enviro
 admins-MacBook-Pro-3:~ admin$ echo $ANDROID_HOME
 /Users/admin/Library/Android/sdk/
 ```
-# 
+
