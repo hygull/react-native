@@ -16,3 +16,7 @@ CabBookingApp@0.0.1 /Users/admin/projects/ReactNative/src/Apps/CabBookingApp
 ### Style
 
 Visit [here](http://facebook.github.io/react-native/releases/0.25/docs/style.html) 
+
+### How to set global styles
+
+Visit [here](http://stackoverflow.com/questions/30853178/react-native-global-styles) to see about setting global styles in React Native.

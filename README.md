@@ -10,6 +10,8 @@ A JavaScript framework for building native mobile applications(apps).
 
 I have listed most of the errors that I faced [here](./docs/do-not-do-this.mdown). Just check it.
 
+You can also check list of great linkes [here](./docs/links.md)
+
 ### React Native Components
 
 Image

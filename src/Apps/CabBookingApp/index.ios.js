@@ -32,6 +32,7 @@ import SwitchComponent from "./MyComponents/SwitchComponent/SwitchComponent"
 import QuoteComponent from "./MyComponents/QuoteComponent/QuoteComponent"
 import VideoGrabbingRestComponent from "./MyComponents/VideoGrabbingRestComponent/VideoGrabbingRestComponent"
 import DataGrabbingRestComponent from "./MyComponents/DataGrabbingRestComponent/DataGrabbingRestComponent"
+import HeadImageHelloComponent from "./MyComponents/HeadImageHelloComponent/HeadImageHelloComponent"
 
 export default class CabBookingApp extends Component {
     constructor(props) {
@@ -42,7 +43,6 @@ export default class CabBookingApp extends Component {
             this.state = {
                 dataSource: ds.cloneWithRows(["Rogert", "Michaelson", "GrowFill"]       ),
                 name : "User",
-                company : "Offlinetrend solutions pvt ltd",
             }
     }
       // constructor() {
@@ -62,25 +62,9 @@ export default class CabBookingApp extends Component {
         return (
 
                   <Container>
+
+                      <HeadImageHelloComponent />
                       <View style={styles.container}>
-                        <Text style={{fontSize:20, color:"black", marginTop:40}}> Welcome to </Text>
-                        
-                        <Text style={{fontWeight:"bold", color:"green", fontSize:30, marginBottom:1}}>CabBooking Service</Text>
-                        
-                        <Text style={styles.company}>
-                          Developed at{" "}
-                              <Text style={styles.company_text}>
-                                {this.state.company}
-                              </Text>
-                        </Text>
-                        <Image source={require("./img/car.jpg")} style={{height:200, width:375}}/>
-                                            
-                        <Text style={styles.welcome}>
-                            Hello {this.state.name} {" "}
-                            <Text style={{color:"gray", fontWeight:"bold"}}>
-                                Enjoy this app 
-                            </Text>  
-                        </Text>
                         
                         <Text style={styles.instruction}>
                           It is nice, concise & easy to use. {"\n"}
