@@ -60,18 +60,9 @@ export default class CabBookingApp extends Component {
 
                       <HeadImageHelloComponent />
                       
-                      <PraiseInputQuoteComponent /> 
-
-                      <TextBlueComponent />
-
-                      <Text style={styles.activeMessage}>Are you Active? <SwitchComponent /></Text>
-                      
-                      <SimpleTextComponent />
-
-                      <ListPresentationalComponent dataSource={this.state.dataSource}/>
-
+                    
                       <DataGrabbingRestComponent />
-                      
+
                   </Container>      
         );
     }

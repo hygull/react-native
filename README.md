@@ -8,9 +8,9 @@ A JavaScript framework for building native mobile applications(apps).
 
 [DialogBox](https://www.npmjs.com/package/react-native-dialogbox)
 
-I have listed most of the errors that I faced [here](./docs/do-not-do-this.mdown). Just check it.
+I have listed most of the errors  [here](./docs/do-not-do-this.mdown) that I faced while creating ios application. Just check it.
 
-You can also check list of great linkes [here](./docs/links.md)
+You can also check list of great links [here](./docs/links.md)
 
 | program/technology | version |
 | ------------------ | ------- |
@@ -19,9 +19,11 @@ You can also check list of great linkes [here](./docs/links.md)
 
 ### React Native Components
 
-Image
-Text
-TextInput
+* Image
+
+* Text
+
+* TextInput
 
 ### Props 
 

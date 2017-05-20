@@ -17,7 +17,6 @@ export default class DataGrabbingRestComponent extends Component {
 
 	fetchUsers() {
 		fetch("https://jsonplaceholder.typicode.com/users")
-		// fetch("https://jsonplaceholder.typicode.com/posts")
 		// fetch("http://services.groupkt.com/country/get/all")
 		// fetch("http://rishikesh67.pythonanywhere.com/hygull/api/videos/")
 		// fetch(
@@ -33,12 +32,12 @@ export default class DataGrabbingRestComponent extends Component {
 		.then((response) => response.json())
 		.then((response) => {
 			this.setState({
-				userDataSource: this.state.userDataSource.cloneWithRows(response.slice(0,5))
+				userDataSource: this.state.userDataSource.cloneWithRows(response)
 			})
 		})
 		.catch((error) => {
 			console.log("Error occured")
-			AlertIOS.AlertIOS("Error while GET request")
+			// AlertIOS.alert("Error while GET request")
 			// throw error
 		})
 	}
@@ -52,7 +51,7 @@ export default class DataGrabbingRestComponent extends Component {
 		return (
 			<View style={styles.row}>
 				<Text style={styles.rowText}> 
-					<Text style={{color:"green"}} >{user.name}</Text>, <Text style={{color:"red"}}>{user.address.street}</Text>
+					{user.name, user.address.street}
 				</Text>
 
 			</View>
@@ -61,14 +60,13 @@ export default class DataGrabbingRestComponent extends Component {
 
 	render() {
 		return (
-				<View>
-					<Button onPress={() => this.showUsers()} color="green" backgroundColor="red" accessibilityLabel="GetUsers" title="Get Users" style={styles.button}/>
-					
-					<ListView
-						dataSource = { this.state.userDataSource }
-						renderRow = { this.renderRow.bind(this) }
-					/>
-				</View>
+			<View>
+				<Button onPress={() => this.showUsers()} accessibilityLabel="GetUsers" title="Get Users"/>
+				<ListView
+					dataSource={this.state.userDataSource}
+					renderRow={this.renderRow.bind(this)}
+				/>
+			</View>
 		)
 	}
 }
@@ -83,12 +81,7 @@ const styles = StyleSheet.create({
 	},
 	rowText: {
 		flex: 1,
-		textAlign: "center"
-	},
-	button:{
-		backgroundColor: "green",
-		color: "red",
-		fontWeight: "bold"
+		textAlign:"center"
 	}
 })
 

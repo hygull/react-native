@@ -1,4 +1,4 @@
-### (1) Do not do this otherwise(StaticRenderer.render():A Valid React element must be returned)
+#### (1) Do not do this otherwise(StaticRenderer.render():A Valid React element must be returned)
 
 ```javascript
 				<ListView
@@ -13,7 +13,7 @@
 				/>
 ```
 
-### Do this (by removing the curly braces)
+#### Do this (by removing the curly braces)
 
 ```javascript
 				<ListView
@@ -28,19 +28,19 @@
 				/>
 ```
 
-### (2) Do not do this otherwise(_reactNative2.default.create is not a function)
+#### (2) Do not do this otherwise(_reactNative2.default.create is not a function)
 
 ```javascript
 import StyleSheet from "react-native" 
 ```
 
-### Do this
+#### Do this
 
 ```javascript
 import {StyleSheet} from "react-native" 
 ```
 
-### (3) Don't do this otherwise(This is not allowed before super)
+#### (3) Don't do this otherwise(This is not allowed before super)
 
 ```javascript
 	constructor(){
@@ -50,7 +50,7 @@ import {StyleSheet} from "react-native"
 	}
 ```
 
-### Do this
+#### Do this
 
 ```javascript
 	constructor(){
@@ -61,14 +61,54 @@ import {StyleSheet} from "react-native"
 	}
 ```
 
-### (4) Do not do this otherwise(Cannot call a class as a function)
+#### (4) Do not do this otherwise(Cannot call a class as a function)
 
 ```typescript
 		const ds =  ListView.DataSource({rowHasChanged: (r1, r2) => r1!==r2})
 ```
 
-### Do this
+#### Do this
 
 ```typescript
 		const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1!==r2})
+```
+
+#### Don't do this (while specifying styles in other file)
+
+```javascript
+import {StyleSheet} from "react-native" 
+
+const styles = StyleSheet.create({
+	  container: {
+	    // flex: 1,
+	    // justifyContent: 'center',
+	    alignItems: 'center',
+	    backgroundColor: '#e6fff2',
+	  },
+	  welcome: {
+	    fontSize: 20,
+	    textAlign: 'center',
+	    margin: 10,
+	  },
+ });
+```
+
+#### Do this
+
+```javascript
+import {StyleSheet} from "react-native" 
+
+export default StyleSheet.create({
+	  container: {
+	    // flex: 1,
+	    // justifyContent: 'center',
+	    alignItems: 'center',
+	    backgroundColor: '#e6fff2',
+	  },
+	  welcome: {
+	    fontSize: 20,
+	    textAlign: 'center',
+	    margin: 10,
+	  },
+ });
 ```

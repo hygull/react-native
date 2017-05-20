@@ -20,3 +20,11 @@ Visit [here](http://facebook.github.io/react-native/releases/0.25/docs/style.htm
 ### How to set global styles
 
 Visit [here](http://stackoverflow.com/questions/30853178/react-native-global-styles) to see about setting global styles in React Native.
+
+### React Component Life Cycle
+
+Visit [here](http://busypeoples.github.io/post/react-component-lifecycle/) to check the documentation.
+
+### REST API CALL, Syntax (solution)
+
+Visit [here](https://github.com/ide/react-native-button)
