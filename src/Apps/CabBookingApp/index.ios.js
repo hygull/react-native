@@ -3,10 +3,11 @@
  * https://github.com/facebook/react-native
  * @flow
  * {
-      "details" : {
-        "created_on" : "18 May 2017",
-        "aim" : "to create an application for mobile"
-      }
+        "details" : {
+                        "created_on" : "18 May 2017",
+                        "aim" : "to create an application for mobile"
+                    }
+    }
  */
 
 import React, { Component } from 'react';
@@ -24,7 +25,7 @@ import {
 import ImageSlider from "react-native-image-slider";
 import { Container, Header, Button, Icon, Title, Left,Body, Right } from "native-base"
 
-// import styles from "./MyStyles/Styles"
+import styles from "./MyStyles/Styles"
 import TextBlueComponent from "./MyComponents/TextBlueComponent/TextBlueComponent"
 import ListPresentationalComponent from "./MyComponents/ListPresentationalComponent/ListPresentationalComponent"
 import SwitchComponent from "./MyComponents/SwitchComponent/SwitchComponent"
@@ -36,7 +37,7 @@ export default class CabBookingApp extends Component {
     constructor(props) {
             super(props)
             console.log("Super get called.")
-            const ds = new ListView.DataSource({rowHasChanged:(r1,r2) => r1!==r2})
+            const ds = new ListView.DataSource({rowHasChanged:(r1,r2) => r1 !== r2})
            
             this.state = {
                 dataSource: ds.cloneWithRows(["Rogert", "Michaelson", "GrowFill"]       ),
@@ -100,48 +101,11 @@ export default class CabBookingApp extends Component {
 
                       <ListPresentationalComponent dataSource={this.state.dataSource}/>
 
-                     
                       <DataGrabbingRestComponent />
                   </Container>      
         );
     }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-    //justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#e6fff2',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  company: {
-    textAlign: 'center',
-    color: 'green',
-    marginBottom: 5,
-  },
-  instruction:{
-    textAlign:"center",
-    color:"navy",
-    margin:5,
-  },
-  company_text:{
-    textAlign:"center",
-    color:"gray",
-    margin:1,
-    fontWeight:"bold",
-  },
-  activeMessage:{
-    color:"gray",
-    fontSize:35,
-    fontWeight:"bold",
-    paddingLeft:5
-  }
-
-});
 
 AppRegistry.registerComponent('CabBookingApp', () => CabBookingApp);

@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { AppRegistry, Text, View, ListView, StyleSheet } from "react-native"
+import { AppRegistry, Text, View, ListView, StyleSheet, AlertIOS } from "react-native"
 
 export default class DataGrabbingRestComponent extends Component {
 	constructor() {
@@ -17,6 +17,8 @@ export default class DataGrabbingRestComponent extends Component {
 
 	fetchUsers() {
 		fetch("https://jsonplaceholder.typicode.com/users")
+		// fetch("http://services.groupkt.com/country/get/all")
+		// fetch("http://rishikesh67.pythonanywhere.com/hygull/api/videos/")
 		// fetch(
 		// 	"http://rishikesh67.pythonanywhere.com/hygull/api/videos/",
 		// 	 {
@@ -24,14 +26,20 @@ export default class DataGrabbingRestComponent extends Component {
 		// 	  headers: {
 		// 	    'Accept': 'application/json',
 		// 	    'Content-Type': 'application/json',
+		// 	    "Access-Control-Allow-Origin": "http://rishikesh67.pythonanywhere.com",
 		// 	  },
-		// 	  body: "",
+			  
 		// 	})
 		.then((response) => response.json())
 		.then((response) => {
 			this.setState({
 				userDataSource: this.state.userDataSource.cloneWithRows(response)
 			})
+		})
+		.catch((error) => {
+			console.log("Error occured")
+			// AlertIOS.alert("Error while GET request")
+			// throw error
 		})
 	}
 

@@ -1,0 +1,20 @@
+The way to declare styles in React Native is the following:
+
+```javascript
+var styles = StyleSheet.create({
+  base: {
+    width: 38,
+    height: 38,
+  },
+  background: {
+    backgroundColor: '#222222',
+  },
+  active: {
+    borderWidth: 2,
+    borderColor: '#00ff00',
+  },
+});
+```
+
+All the core components accept a style attribute.
+

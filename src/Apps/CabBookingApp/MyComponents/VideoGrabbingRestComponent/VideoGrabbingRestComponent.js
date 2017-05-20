@@ -30,8 +30,9 @@ const styles = StyleSheet.create(
 
 		},
 		text:{
-			color:"white",
-			textAlign:"center"
+			color: "white",
+			textAlign: "center",
+			fontWeight: "bold"
 		}
 	}
 ) 

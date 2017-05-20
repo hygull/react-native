@@ -1,4 +1,4 @@
-# Image slider
+### Image slider
 
 Visit [here](https://www.npmjs.com/package/react-native-image-slider)
 
@@ -13,3 +13,6 @@ CabBookingApp@0.0.1 /Users/admin/projects/ReactNative/src/Apps/CabBookingApp
 └── react-native-image-slider@1.1.5 
 ```
 
+### Style
+
+Visit [here](http://facebook.github.io/react-native/releases/0.25/docs/style.html) 
