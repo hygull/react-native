@@ -112,3 +112,49 @@ export default StyleSheet.create({
 	  },
  });
 ```
+
+#### Do not do this(ScrollView) otherwise (Warning)
+```javascript
+
+export default ScrollViewComponent = (props) =>  {
+			const getUsersEach = (user) => (
+				<Text style={styles.text}>
+					{user.name}
+				</Text>
+			)	
+
+		
+			return (
+				<View>
+					<ScrollView>
+						{ props.persons.map(getUsersEach) }
+					</ScrollView>
+				</View>
+			)
+		
+	
+} 
+```
+
+#### Do this - (if you will forget to specify key attribute then it will cause the warning message)
+
+```
+export default ScrollViewComponent = (props) =>  {
+			const getUsersEach = (user) => (
+				<Text key={user.age} style={styles.text}>
+					{user.name}
+				</Text>
+			)	
+
+		
+			return (
+				<View>
+					<ScrollView>
+						{ props.persons.map(getUsersEach) }
+					</ScrollView>
+				</View>
+			)
+		
+	
+} 
+```
