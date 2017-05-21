@@ -34,10 +34,12 @@ import DataGrabbingRestComponent from "./MyComponents/DataGrabbingRestComponent/
 import HeadImageHelloComponent from "./MyComponents/HeadImageHelloComponent/HeadImageHelloComponent"
 import PraiseInputQuoteComponent from "./MyComponents/PraiseInputQuoteComponent/PraiseInputQuoteComponent"
 import SimpleTextComponent from "./MyComponents/SimpleTextComponent/SimpleTextComponent"
+import ScrollViewComponent from "./MyComponents/ScrollViewComponent/ScrollViewComponent"
 
 import styles from "./MyStyles/Styles"
 
 export default class CabBookingApp extends Component {
+
     constructor(props) {
             super(props)
             console.log("Super get called.")
@@ -45,6 +47,19 @@ export default class CabBookingApp extends Component {
            
             this.state = {
                 dataSource: ds.cloneWithRows(["Rogert", "Michaelson", "GrowFill"]       ),
+                persons : [
+                {"name": "Hemkesh Agrawani", age: 23},
+                {"name": "Rishikesh Dorman", age: 29},
+                {"name": "Darshan Sidar", age: 24},
+                {"name": "Rishikesh Agrawani", age: 26},    
+                {"name": "Rishikesh Agrawani", age: 28},
+                {"name": "Rishikesh Agrawani", age: 27},
+                {"name": "Rishikesh Agrawani", age: 31},
+                {"name": "Malinikesh Agrawani", age: 21},
+                {"name": "Smariaka Verma", age: 20},
+                {"name": "Rishikesh Agrawani", age: 19},
+                {"name": "Sundar Verma", age: 42},
+            ]
             }
     }
 
@@ -62,6 +77,8 @@ export default class CabBookingApp extends Component {
                       
                     
                       <DataGrabbingRestComponent />
+
+                      <ScrollViewComponent persons={this.state.persons}/>
 
                   </Container>      
         );
