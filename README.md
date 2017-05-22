@@ -8,6 +8,8 @@ A JavaScript framework for building native mobile applications(apps).
 
 [DialogBox](https://www.npmjs.com/package/react-native-dialogbox)
 
+[Font families](./docs/font-families.md)
+
 I have listed most of the errors  [here](./docs/do-not-do-this.mdown) that I faced while creating ios application. Just check it.
 
 You can also check list of great links [here](./docs/links.md)
@@ -293,4 +295,15 @@ Visit [here](http://stackoverflow.com/questions/28296237/set-android-home-enviro
 admins-MacBook-Pro-3:~ admin$ echo $ANDROID_HOME
 /Users/admin/Library/Android/sdk/
 ```
+
+# React Navigation
+
+Visit [here](https://facebook.github.io/react-native/docs/navigation.html)
+
+Visit [here](https://reactnavigation.org/docs/intro/) to know about StackNavigator
+
+```javascript
+npm install --save react-navigation
+```
+
 

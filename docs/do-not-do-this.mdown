@@ -167,7 +167,7 @@ export default ScrollViewComponent = (props) =>  {
 				</TouchableNativeFeedback>
 ```
 
-#### Do not do this otherwise (Warning)
+#### Do not do this otherwise (Warning for TouchableWithoutFeedback)
 
 ```javascript
 	render() {

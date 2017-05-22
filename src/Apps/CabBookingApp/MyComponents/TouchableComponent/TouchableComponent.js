@@ -27,6 +27,7 @@ export default class TouchableComponent extends Component {
 				<TouchableHighlight onPress={ this.onPressHighlight }>
 					<Text style={styles.text1}> Press Me - TouchableHighlight </Text>
 				</TouchableHighlight>
+				
 				<TouchableOpacity onPress={ this.onPressOpacity }>
 					<Text style={styles.text2}> Press Me - TouchableOpacity</Text>
 				</TouchableOpacity>
