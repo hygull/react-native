@@ -1,5 +1,5 @@
 import React from "react"
-import { AppRegistry, Text} from "react-native"
+import { AppRegistry, Text, View} from "react-native"
 import { StackNavigator } from "react-navigation"
 
 //Home Screen
@@ -9,12 +9,28 @@ class CabBookingHomeScreen extends React.Component {
 	}
 
 	render() {
-		return <Text style={
+		return 	<View>
+				<Text style={
 							{color: "green", fontWeight: "bold", 
 							textAlign: "center", paddingTop: 20, fontFamily:"Verdana"}
 				}> 
 					Hello, programmers!
-				</Text>;
+				</Text>
+				</View>
+
+	}
+}
+
+//About Screen
+class CabBookingAboutScreen extends React.Component {
+	static navigationOptions = {
+		title: "About",
+	}
+
+	render() {
+		return <View>
+					<Text> This is About Us page</Text>
+				</View>
 	}
 }
 
