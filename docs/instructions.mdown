@@ -59,3 +59,18 @@ fetch("https://jsonplaceholder.typicode.com/users")
   }
 ```
 
+#### Pass attributes to another class
+
+index.ios.js
+
+```
+<TouchableComponent name="Rihikesh" />
+```
+
+TouchableComponent.js
+
+```
+        <TouchableWithoutFeedback>
+          <View><Text onPress={ this.onPressWithoutFeedback } style={styles.text3}>Press Me {this.props.name} - TouchableWithoutFeedback </Text></View>
+        </TouchableWithoutFeedback>
+```

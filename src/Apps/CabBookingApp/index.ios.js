@@ -35,6 +35,7 @@ import HeadImageHelloComponent from "./MyComponents/HeadImageHelloComponent/Head
 import PraiseInputQuoteComponent from "./MyComponents/PraiseInputQuoteComponent/PraiseInputQuoteComponent"
 import SimpleTextComponent from "./MyComponents/SimpleTextComponent/SimpleTextComponent"
 import ScrollViewComponent from "./MyComponents/ScrollViewComponent/ScrollViewComponent"
+import TouchableComponent from "./MyComponents/TouchableComponent/TouchableComponent"
 
 import styles from "./MyStyles/Styles"
 
@@ -74,12 +75,9 @@ export default class CabBookingApp extends Component {
                   <Container>
 
                       <HeadImageHelloComponent />
-                      
+                      <TouchableComponent name="Rihikesh" />
                     
-                      <DataGrabbingRestComponent />
-
-                      <ScrollViewComponent persons={this.state.persons}/>
-
+                      
                   </Container>      
         );
     }

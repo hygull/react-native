@@ -158,3 +158,53 @@ export default ScrollViewComponent = (props) =>  {
 	
 } 
 ```
+
+#### iOS platform does not support (Warning if used)
+
+```javascript
+				<TouchableNativeFeedback>
+					<Text> Hello - TouchableNativeFeedback</Text>
+				</TouchableNativeFeedback>
+```
+
+#### Do not do this otherwise (Warning)
+
+```javascript
+	render() {
+		return (
+			<View style={styles.view}>
+				<TouchableHighlight>
+					<Text> Hello - TouchableHighlight </Text>
+				</TouchableHighlight>
+				<TouchableOpacity>
+					<Text> Hello - TouchableOpacity</Text>
+				</TouchableOpacity>
+
+				<TouchableWithoutFeedback>
+					<Text>Hello - TouchableWithoutFeedback </Text>
+				</TouchableWithoutFeedback>
+			</View>
+		)
+	} 
+```
+
+#### Do this (wrap Text children inside View as warning says this, check it)
+
+```javascript
+	render() {
+		return (
+			<View style={styles.view}>
+				<TouchableHighlight>
+					<Text> Hello - TouchableHighlight </Text>
+				</TouchableHighlight>
+				<TouchableOpacity>
+					<Text> Hello - TouchableOpacity</Text>
+				</TouchableOpacity>
+
+				<TouchableWithoutFeedback>
+					<View><Text>Hello - TouchableWithoutFeedback </Text></View>
+				</TouchableWithoutFeedback>
+			</View>
+		)
+	} 
+```
