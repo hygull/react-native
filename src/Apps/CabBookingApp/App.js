@@ -1,5 +1,5 @@
 import React from "react"
-import { AppRegistry, Text, View, Button} from "react-native"
+import { AppRegistry, Text, View, Button, Image} from "react-native"
 import { StackNavigator } from "react-navigation"
 
 import DataGrabbingRestComponent from "./MyComponents/DataGrabbingRestComponent/DataGrabbingRestComponent"
@@ -37,6 +37,7 @@ class CabBookingAboutScreen extends React.Component {
 									fontSize:20, fontFamily:"Verdana"
 							}
 					}> These are our Users</Text>
+					<Image source={require("./img/cute_child.jpg")} style={{height:200, width:375}}/>
 					<DataGrabbingRestComponent />
 				</View>
 	}
