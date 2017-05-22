@@ -1,6 +1,9 @@
 import React from "react"
-import { AppRegistry, Text, View} from "react-native"
+import { AppRegistry, Text, View, Button} from "react-native"
 import { StackNavigator } from "react-navigation"
+
+import DataGrabbingRestComponent from "./MyComponents/DataGrabbingRestComponent/DataGrabbingRestComponent"
+import HeadImageHelloComponent from "./MyComponents/HeadImageHelloComponent/HeadImageHelloComponent"
 
 //Home Screen
 class CabBookingHomeScreen extends React.Component {
@@ -9,13 +12,12 @@ class CabBookingHomeScreen extends React.Component {
 	}
 
 	render() {
+		//Linking to About Screen
+		const { navigate } = this.props.navigation
+
 		return 	<View>
-				<Text style={
-							{color: "green", fontWeight: "bold", 
-							textAlign: "center", paddingTop: 20, fontFamily:"Verdana"}
-				}> 
-					Hello, programmers!
-				</Text>
+					<HeadImageHelloComponent />
+					<Button onPress={ () => navigate("Chat")} title="About"/>
 				</View>
 
 	}
@@ -29,14 +31,21 @@ class CabBookingAboutScreen extends React.Component {
 
 	render() {
 		return <View>
-					<Text> This is About Us page</Text>
+					<Text style={
+									{color: "blue", fontWeight: "bold", 
+									textAlign: "center", paddingTop: 20, 
+									fontSize:20, fontFamily:"Verdana"
+							}
+					}> These are our Users</Text>
+					<DataGrabbingRestComponent />
 				</View>
 	}
 }
 
 const CabBookingApp = StackNavigator(
 	{
-		Home: {screen: CabBookingHomeScreen}
+		Home: {screen: CabBookingHomeScreen},
+		Chat: {screen: CabBookingAboutScreen},
 	}
 )
 
