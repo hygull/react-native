@@ -90,12 +90,8 @@ class CabBookingScreen extends React.Component {
 	}
 
 	render() {
-<<<<<<< HEAD
 		return  <KeyboardAvoidingView behavior="padding" style={styles.keyboard}>
 				<View style={ styles.book_container_view }>
-=======
-		return  <View style={ styles.book_container_view }>
->>>>>>> a02df4980f545f559339f15a13fe0e2207b56db0
 					
 						<Text style={[styles.loctext,{marginTop: 25}]}>
 						<Image source={require("../../img/from_map.png")} style={{height:20, width: 20}}/>
@@ -116,10 +112,7 @@ class CabBookingScreen extends React.Component {
 						/>
 					
 				</View>
-<<<<<<< HEAD
 				</KeyboardAvoidingView>
-=======
->>>>>>> a02df4980f545f559339f15a13fe0e2207b56db0
 			
 	}
 }
@@ -225,14 +218,11 @@ const styles = {
 		fontSize: 23,
 		fontFamily: "Arial",
 		fontWeight: "bold",
-<<<<<<< HEAD
 	},
 	keyboard: {
 		height: 300,
 		width: 375,
 		flex: 1,
-=======
->>>>>>> a02df4980f545f559339f15a13fe0e2207b56db0
 	}
 }
 AppRegistry.registerComponent("CabBookingApp", () => CabBookingApp)
