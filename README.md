@@ -18,7 +18,7 @@ A JavaScript framework for building native mobile applications(apps).
 
 [Video to make a login screen](https://youtu.be/1xu1eeRCPEk)
 
-Password 
+##### Password 
 ```javascript
 <TextInput 
     placeholder="password"
@@ -307,7 +307,7 @@ Downloading https://services.gradle.org/distributions/gradle-2.14.1-all.zip
 
 # ANDROID_HOME
 
-Visit [here](http://stackoverflow.com/questions/28296237/set-android-home-environment-variable-in-mac) to see the how to set.
+Visit [here](http://stackoverflow.com/questions/28296237/set-android-home-environment-variable-in-mac) to see how to set.
 
 ```
 admins-MacBook-Pro-3:~ admin$ echo $ANDROID_HOME
