@@ -65,7 +65,7 @@ export default class DataGrabbingRestComponent extends Component {
 		return (
 				<View style={{borderRadius:5}}>
 				 <TouchableOpacity onPress={() => this.showUsers()} 
-				 	style={{margin: 10, marginLeft:100, marginRight: 100,borderRadius:5 }}
+				 	style={{margin: 10, marginLeft:10, marginRight: 10,borderRadius:5 }}
 				 >
 				 	<View>
 				 		<Text style={{backgroundColor:"#27ae60",borderRadius: 5, borderWidth: 1, borderColor: "#3498db", padding: 5, fontSize: 15,color: "white", textAlign: "center", fontWeight: "bold"}}>
