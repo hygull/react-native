@@ -6,7 +6,6 @@ import {
   View,
 } from 'react-native';
 
-
 import styles from "../../MyStyles/Styles"
 
 export default class HeadImageHelloComponent extends Component { 

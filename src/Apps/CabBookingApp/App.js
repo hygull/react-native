@@ -1,5 +1,5 @@
 import React from "react"
-import { AppRegistry, Text, View, Button, Image, ScrollView, FlatList} from "react-native"
+import { AppRegistry, Text, View, Button, Image, ScrollView, TextInput } from "react-native"
 import { StackNavigator } from "react-navigation"
 
 import DataGrabbingRestComponent from "./MyComponents/DataGrabbingRestComponent/DataGrabbingRestComponent"
@@ -27,6 +27,14 @@ class CabBookingHomeScreen extends React.Component {
 						/>
 					</View>
 					<View style={styles.view2}>
+						<Button 
+							onPress={ () => 
+								navigate("CabBook")
+							} 
+							title="Get a Cab"
+						/>
+					</View>
+					<View style={styles.view3}>
 						<Button 
 							onPress={ () => 
 								navigate("Village")
@@ -61,6 +69,36 @@ class CabBookingAboutScreen extends React.Component {
 					<Image source={require("./img/cute_child.jpg")} style={styles.pic}/>
 
 					<DataGrabbingRestComponent />
+				</View>
+	}
+}
+
+class CabBookingScreen extends React.Component {
+	static navigationOptions = {
+		title: "Enjoy the Cab ride!!!"
+	}
+
+	render() {
+		return  <View style={ styles.book_container_view }>
+
+						<Text style={[styles.loctext,{marginTop: 25}]}>
+						<Image source={require("./img/from_map.png")} style={{height:20, width: 20}}/>
+							Where are you now?
+						</Text>
+						<TextInput
+							placeholder="Enter your location"
+							style={styles.text_input}
+						/>
+				
+						<Text style={[styles.loctext, {marginTop: 20}]}>
+							<Image source={require("./img/to_map.png")} style={{height:20, width: 20}}/>
+							Where do you wanna go?
+						</Text>
+						<TextInput
+							placeholder="Enter your destination"
+							style={styles.text_input}
+						/>
+
 				</View>
 	}
 }
@@ -108,6 +146,9 @@ class CabBookingPicScreen extends React.Component {
 						<Text style={styles.txt}>Wood cutter</Text> 
 						<Image source={require('./img/village_wood.jpg')} style={styles.pic}/>
 						
+						<Text style={styles.txt}>Rural area</Text> 
+						<Image source={require('./img/rural.jpg')} style={styles.pic}/>
+
 						<Text style={styles.txt}>Food cooking women</Text> 
 						<Image source={require('./img/food_cooking_women_camel.jpg')} style={styles.pic}/>
 					</ScrollView>
@@ -121,6 +162,7 @@ const CabBookingApp = StackNavigator(
 		Home: {screen: CabBookingHomeScreen},
 		Chat: {screen: CabBookingAboutScreen},
 		Village: {screen: CabBookingPicScreen},
+		CabBook: {screen: CabBookingScreen},
 	}
 )
 
@@ -137,6 +179,31 @@ const styles = {
 	},
 	view2: {
 		backgroundColor: "#c1f0c1"
+	},
+	view3: {
+		backgroundColor: "#c1f0e1"
+	},
+	book_container_view: {
+		// backgroundColor: "#d6f5d6",
+		backgroundColor: "#16a085",
+		flex: 1,
+		alignItems: "center",
+		// justifyContent: "center",
+	},
+	text_input: {
+		height: 40, 
+		backgroundColor: "#ecf0f1", 
+		textAlign: "center",
+		margin: 10,
+		padding: 5,
+		borderRadius: 5,
+
+	},
+	loctext: {
+		color: "white",
+		fontSize: 23,
+		fontFamily: "Arial",
+		fontWeight: "bold",
 	}
 }
 AppRegistry.registerComponent("CabBookingApp", () => CabBookingApp)

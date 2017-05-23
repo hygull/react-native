@@ -12,6 +12,8 @@ A JavaScript framework for building native mobile applications(apps).
 
 [React Native Flat Button](https://www.npmjs.com/package/react-native-flat-button)
 
+[Layouts](https://code.tutsplus.com/tutorials/get-started-with-layouts-in-react-native--cms-27418)
+
 [Video on TouchableHighlight](https://egghead.io/lessons/react-make-a-button-in-react-native-with-touchablehighlight)
 
 [Video to make a login screen](https://youtu.be/1xu1eeRCPEk)
