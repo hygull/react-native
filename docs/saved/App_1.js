@@ -17,12 +17,7 @@ class CabBookingHomeScreen extends React.Component {
 
 		return 	<View>
 					<HeadImageHelloComponent />
-					<Button 
-						onPress={ () => 
-							navigate("Chat", { user: "Rojert" })
-						} 
-						title="About"
-					/>
+					<Button onPress={ () => navigate("Chat")} title="About"/>
 				</View>
 
 	}
@@ -30,22 +25,18 @@ class CabBookingHomeScreen extends React.Component {
 
 //About Screen
 class CabBookingAboutScreen extends React.Component {
-	// static navigationOptions = {
-	// 	title: "About",
-	// }
-	static navigationOptions = ({ navigation }) => ({
-		title: `Hi, ${navigation.state.params.user}!`
-	})
+	static navigationOptions = {
+		title: "About",
+	}
 
 	render() {
-		const {params} = this.props.navigation.state
 		return <View>
 					<Text style={
 									{color: "blue", fontWeight: "bold", 
 									textAlign: "center", paddingTop: 20, 
-									fontSize:20, fontFamily:"Georgia", paddingBottom: 10
+									fontSize:20, fontFamily:"Verdana"
 							}
-					}> Hey {params.user}, these are our users</Text>
+					}> These are our Users</Text>
 					<Image source={require("./img/cute_child.jpg")} style={{height:200, width:375}}/>
 					<DataGrabbingRestComponent />
 				</View>

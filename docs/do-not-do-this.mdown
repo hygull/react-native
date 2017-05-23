@@ -208,3 +208,44 @@ export default ScrollViewComponent = (props) =>  {
 		)
 	} 
 ```
+
+#### Do not do this otherwise(Touchable child must either be native or forward setNativeProps to a native component)
+
+```javascript
+	render() {
+		return (
+				<View>
+				 <TouchableHighlight onPress={() => {}}>
+				 	
+						<Button onPress={() => this.showUsers()} color="green" backgroundColor="red" accessibilityLabel="GetUsers" title="Get Users" style={styles.button}/>
+				 	
+				 </TouchableHighlight>	
+					<ListView
+						dataSource = { this.state.userDataSource }
+						renderRow = { this.renderRow.bind(this) }
+					/>
+				</View>
+		)
+	}
+}
+```
+
+#### Do this (Use View to wrap Button)
+
+```javascript
+	render() {
+		return (
+				<View>
+				 <TouchableHighlight onPress={() => {}}>
+				 	<View>
+						<Button onPress={() => this.showUsers()} color="green" backgroundColor="red" accessibilityLabel="GetUsers" title="Get Users" style={styles.button}/>
+				 	</View>
+				 </TouchableHighlight>	
+					<ListView
+						dataSource = { this.state.userDataSource }
+						renderRow = { this.renderRow.bind(this) }
+					/>
+				</View>
+		)
+	}
+```

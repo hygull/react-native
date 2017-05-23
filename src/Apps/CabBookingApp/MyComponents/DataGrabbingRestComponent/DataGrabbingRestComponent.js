@@ -1,5 +1,7 @@
 import React, { Component } from "react"
-import { AppRegistry, Text, View, ListView, StyleSheet, AlertIOS, Button } from "react-native"
+import { AppRegistry, Text, View, ListView, StyleSheet, AlertIOS, Button, 
+		TouchableOpacity
+} from "react-native"
 
 export default class DataGrabbingRestComponent extends Component {
 	constructor() {
@@ -61,9 +63,16 @@ export default class DataGrabbingRestComponent extends Component {
 
 	render() {
 		return (
-				<View>
-					<Button onPress={() => this.showUsers()} color="green" backgroundColor="red" accessibilityLabel="GetUsers" title="Get Users" style={styles.button}/>
-					
+				<View style={{borderRadius:5}}>
+				 <TouchableOpacity onPress={() => this.showUsers()} 
+				 	style={{margin: 10, marginLeft:100, marginRight: 100,borderRadius:5 }}
+				 >
+				 	<View>
+				 		<Text style={{backgroundColor:"#27ae60",borderRadius: 5, borderWidth: 1, borderColor: "#3498db", padding: 5, fontSize: 15,color: "white", textAlign: "center", fontWeight: "bold"}}>
+				 			See Users
+				 		</Text>
+				 	</View>
+				 </TouchableOpacity>	
 					<ListView
 						dataSource = { this.state.userDataSource }
 						renderRow = { this.renderRow.bind(this) }
@@ -88,7 +97,7 @@ const styles = StyleSheet.create({
 	button:{
 		backgroundColor: "green",
 		color: "red",
-		fontWeight: "bold"
+		fontWeight: "bold",
 	}
 })
 

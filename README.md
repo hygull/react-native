@@ -10,6 +10,20 @@ A JavaScript framework for building native mobile applications(apps).
 
 [Font families](./docs/font-families.md)
 
+[Video on TouchableHighlight](https://egghead.io/lessons/react-make-a-button-in-react-native-with-touchablehighlight)
+
+[Video to make a login screen](https://youtu.be/1xu1eeRCPEk)
+
+Password 
+```javascript
+<TextInput 
+    placeholder="password"
+    placeholderTextColor="rgba(255,255,255, 0.7)"
+    style={styles.password}
+    secureTextEntry
+/>
+```
+
 I have listed most of the errors  [here](./docs/do-not-do-this.mdown) that I faced while creating ios application. Just check it.
 
 You can also check list of great links [here](./docs/links.md)
