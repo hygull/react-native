@@ -47,6 +47,14 @@ class CabBookingHomeScreen extends React.Component {
 						/>
 					</View>
 
+					<View style={styles.view2}>
+						<Button 
+							onPress={ () => 
+								navigate("Youtube")
+							} 
+							title="Youtube"
+						/>
+					</View>
 				</View>
 
 	}
@@ -178,10 +186,7 @@ class CabBookingPicScreen extends React.Component {
 						<Image source={require('../../img/food_cooking_women_camel.jpg')} style={styles.pic}/>
 					
 						
-						<WebView
-							source={{uri: "https://www.youtube.com/"}}
-							style={{marginTop: 45, height: 400}}
-						/>
+
 					</ScrollView>
 
 				</View>
@@ -190,12 +195,30 @@ class CabBookingPicScreen extends React.Component {
 }
 
 
+class YoutubeScreen extends React.Component{
+	static navigationOptions = {
+		title: "Youtube"
+	}
+
+	render() {
+		return <View>
+					<ScrollView>
+							<WebView
+							source={{uri: "https://www.youtube.com/"}}
+							style={{marginTop: 45, flex:1, height:700}}
+							/>
+					</ScrollView>
+				</View>
+	}
+}
+
 const CabBookingApp = StackNavigator(
 	{
 		Home: {screen: CabBookingHomeScreen},
 		Chat: {screen: CabBookingAboutScreen},
 		Village: {screen: CabBookingPicScreen},
 		CabBook: {screen: CabBookingScreen},
+		Youtube: {screen: YoutubeScreen},
 	}
 )
 
