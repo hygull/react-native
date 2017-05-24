@@ -1,8 +1,10 @@
 import React from "react"
 import { AppRegistry, Text, View, Button, Image, ScrollView, TextInput,
-	KeyboardAvoidingView
+	KeyboardAvoidingView, StyleSheet, WebView
  } from "react-native"
 import { StackNavigator } from "react-navigation"
+// import Video  from "react-native-video"
+var Video = require("react-native-video")
 
 import DataGrabbingRestComponent from "../../MyComponents/DataGrabbingRestComponent/DataGrabbingRestComponent"
 import HeadImageHelloComponent from "../../MyComponents/HeadImageHelloComponent/HeadImageHelloComponent"
@@ -124,6 +126,15 @@ class CabBookingPicScreen extends React.Component {
 	}
 
 	render() {
+
+		// // Later to trigger fullscreen
+		// this.player.presentFullscreenPlayer()
+
+		// // To set video position in seconds (seek)
+		// this.player.seek(0)
+
+		
+
 		return <View style={styles.container}>
 					<ScrollView>
 
@@ -165,8 +176,16 @@ class CabBookingPicScreen extends React.Component {
 
 						<Text style={styles.txt}>Food cooking women</Text> 
 						<Image source={require('../../img/food_cooking_women_camel.jpg')} style={styles.pic}/>
+					
+						
+						<WebView
+							source={{uri: "https://www.youtube.com/"}}
+							style={{marginTop: 45, height: 400}}
+						/>
 					</ScrollView>
+
 				</View>
+
 	}
 }
 
@@ -180,7 +199,7 @@ const CabBookingApp = StackNavigator(
 	}
 )
 
-const styles = {
+const styles = StyleSheet.create({
 	pic: {height:200, width:375},
 	txt: {
 			fontFamily: "Verdana", textAlign: "center", 
@@ -223,7 +242,15 @@ const styles = {
 		height: 300,
 		width: 375,
 		flex: 1,
+	},
+	video: {
+		position: "absolute",
+		top: 0,
+		right:0,
+		bottom: 0,
+		left: 0,
 	}
-}
+})
+
 AppRegistry.registerComponent("CabBookingApp", () => CabBookingApp)
 
