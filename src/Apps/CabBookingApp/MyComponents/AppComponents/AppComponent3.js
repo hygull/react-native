@@ -1,6 +1,6 @@
 import React from "react"
 import { AppRegistry, Text, View, Button, Image, ScrollView, TextInput,
-	KeyboardAvoidingView, StyleSheet, WebView
+	KeyboardAvoidingView, StyleSheet, WebView, TouchableOpacity
  } from "react-native"
 import { StackNavigator } from "react-navigation"
 // import Video  from "react-native-video"
@@ -53,6 +53,14 @@ class CabBookingHomeScreen extends React.Component {
 								navigate("Youtube")
 							} 
 							title="Youtube"
+						/>
+					</View>
+					<View style={styles.view1}>
+						<Button 
+							onPress={ () => 
+								navigate("Login")
+							} 
+							title="Login"
 						/>
 					</View>
 				</View>
@@ -143,7 +151,7 @@ class CabBookingPicScreen extends React.Component {
 
 		
 
-		return <View style={styles.container}>
+		return <View style={styles.book_container_view}>
 					<ScrollView>
 
 						<Text style={styles.txt}>Water filling - Awesome work</Text> 
@@ -212,6 +220,36 @@ class YoutubeScreen extends React.Component{
 	}
 }
 
+class LoginScreen extends React.Component {
+	static navigationOptions = {
+		title: "Login"
+	}
+
+	render() {
+		return <KeyboardAvoidingView behavior="padding" style={styles.keyboard2}>
+			<View style={styles.login_container_view}>
+					
+					<Image source={require('../../img/user.png')} style={styles.pic_small}/>
+	
+						<TextInput
+							placeholder="Email"
+							style={styles.text_input}
+						/>
+						<TextInput
+							placeholder="Password"
+							style={styles.text_input}
+							secureTextEntry
+						/>
+						<TouchableOpacity style={styles.login}>
+							<Text style={styles.login_txt}>
+								LOGIN
+							</Text>
+						</TouchableOpacity>
+				</View>
+			</KeyboardAvoidingView>
+	}
+}
+
 const CabBookingApp = StackNavigator(
 	{
 		Home: {screen: CabBookingHomeScreen},
@@ -219,6 +257,7 @@ const CabBookingApp = StackNavigator(
 		Village: {screen: CabBookingPicScreen},
 		CabBook: {screen: CabBookingScreen},
 		Youtube: {screen: YoutubeScreen},
+		Login: {screen: LoginScreen},
 	}
 )
 
@@ -272,7 +311,37 @@ const styles = StyleSheet.create({
 		right:0,
 		bottom: 0,
 		left: 0,
-	}
+	},
+	login_container_view: {
+		backgroundColor: "#1abc9c",
+		// backgroundColor: "#333300",
+		flex: 1,
+		alignItems: "center",
+		// justifyContent: "center",
+	},
+	login:{
+		backgroundColor: "#2980b9",
+	},
+	login_txt:{
+		
+		backgroundColor:"#34495e",
+		padding: 5,
+		color: "white",
+		fontWeight: "bold"
+	},
+	pic_small:{
+		height: 70, width: 70,
+
+	},
+	keyboard2: {
+		height: 300,
+		width: 375,
+		flex: 1,
+		// alignItems: "center",
+		justifyContent: "center",
+		paddingTop: 40,
+		backgroundColor:"#1abc9c",
+	},
 })
 
 AppRegistry.registerComponent("CabBookingApp", () => CabBookingApp)

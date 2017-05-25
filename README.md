@@ -22,7 +22,7 @@ A JavaScript framework for building native mobile applications(apps).
 
 [Video to make a login screen](https://youtu.be/1xu1eeRCPEk)
 
-##### Password 
+### Password 
 ```javascript
 <TextInput 
     placeholder="password"
