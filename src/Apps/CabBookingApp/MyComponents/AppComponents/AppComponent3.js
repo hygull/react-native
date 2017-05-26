@@ -221,6 +221,13 @@ class YoutubeScreen extends React.Component{
 }
 
 class LoginScreen extends React.Component {
+	constructor() {
+		super()
+		this.state = {
+			email : "",
+		}
+	}
+
 	static navigationOptions = {
 		title: "Login"
 	}
@@ -229,15 +236,21 @@ class LoginScreen extends React.Component {
 		return <KeyboardAvoidingView behavior="padding" style={styles.keyboard2}>
 			<View style={styles.login_container_view}>
 					
-					<Image source={require('../../img/user.png')} style={styles.pic_small}/>
+					<Image source={require('../../img/rishi.jpg')} style={styles.pic_small}/>
 	
 						<TextInput
 							placeholder="Email"
+							placeholderTextColor="#bdc3c7"
+							returnKeyType="next"
 							style={styles.text_input}
+							autoFocus
+							onChangeText={(email) => this.setState({email})}
+							keyboarType="numeric"
 						/>
 						<TextInput
 							placeholder="Password"
 							style={styles.text_input}
+							returnKeyType="go"
 							secureTextEntry
 						/>
 						<TouchableOpacity style={styles.login}>
@@ -245,6 +258,7 @@ class LoginScreen extends React.Component {
 								LOGIN
 							</Text>
 						</TouchableOpacity>
+						<Text style={styles.txt}>{this.state.email}</Text>
 				</View>
 			</KeyboardAvoidingView>
 	}
@@ -325,14 +339,16 @@ const styles = StyleSheet.create({
 	login_txt:{
 		
 		backgroundColor:"#34495e",
-		padding: 5,
+		padding: 8,
 		color: "white",
 		fontWeight: "bold"
 	},
 	pic_small:{
-		height: 70, width: 70,
+		height: 85, width:75,
+		borderRadius:10
 
 	},
+
 	keyboard2: {
 		height: 300,
 		width: 375,

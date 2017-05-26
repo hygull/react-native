@@ -5,7 +5,7 @@
  * {
         "details" : {
                         "created_on" : "17 May 2017",
-                        "updated_on" : "20 May 2017",
+                        "updated_on" : "26 May 2017",
                         "aim" : "to create an application for mobile"
                     }
     }
