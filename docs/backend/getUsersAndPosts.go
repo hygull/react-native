@@ -106,7 +106,7 @@
 
 	func main() {
 		http.HandleFunc("/users/", users)
-		http.ListenAndServe(":8080", nil)
+		http.ListenAndServe("0.0.0.0:8080", nil)
 	}
 
 	/* REQUSET

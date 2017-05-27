@@ -18,8 +18,8 @@ export default class DataGrabbingRestComponent extends Component {
 	// }	
 
 	fetchUsers() {
-		fetch("http://127.0.0.1:8080/users/")
-		// fetch("https://jsonplaceholder.typicode.com/users")
+		// fetch("http://127.0.0.1:8080/users/")
+		fetch("https://jsonplaceholder.typicode.com/users")
 		// fetch("https://jsonplaceholder.typicode.com/posts")
 		// fetch("http://services.groupkt.com/country/get/all")
 		// fetch("http://rishikesh67.pythonanywhere.com/hygull/api/videos/")
@@ -43,9 +43,6 @@ export default class DataGrabbingRestComponent extends Component {
 			console.log("Error occured")
 			AlertIOS.alert("Error while GET request")
 			// throw error
-			// <Image source={{uri: url }} 
-			// 			style={{height: 100, width: 100}}
-			// 		/>
 		})
 	}
 
@@ -55,14 +52,10 @@ export default class DataGrabbingRestComponent extends Component {
 	
 
 	renderRow(user) {
-		console.log(user.profile_pic)
-		var url = user.profile_pic
-
 		return (
 			<View style={styles.row}>
 				<Text style={styles.rowText}> 
-					
-					<Text style={{color:"green"}} >{user.firstname}</Text>	
+					<Text style={{color:"green"}} >{user.name}</Text>, <Text style={{color:"red"}}>{user.address.street}</Text>
 				</Text>
 
 			</View>
