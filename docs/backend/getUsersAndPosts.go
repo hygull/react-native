@@ -1,12 +1,12 @@
 	/**
 		{
-			"created_on": "26 may 2017",
+			"created_on": "27 may 2017",
 			"todos": [
 				"go get github.com/go-sql-driver/mysql",
 				"postman(optional)",
 				"browser(optional)",	
 			],
-			"aim": "Converting a table into JSON form"
+			"aim": "Getting users with post details in JSON form"
 		}
 	*/
 
@@ -32,7 +32,7 @@
 	import "log"
 	import "net/http"
 	import "encoding/json"
-
+	import "strconv"
 	import (
 		_"github.com/go-sql-driver/mysql"	
 		"database/sql"
@@ -54,6 +54,13 @@
 			log.Fatal(err)
 		}
 
+		type Post struct{
+			Id int 				`json:"id"`
+			Title string 		`json:"title"`
+			Description string 	`json:"description"`
+			Created string 		`json:"created"`
+		}
+
 		type User struct {
 			Id int 		 `json:"id"`
 			Fname string `json:"firstname"`
@@ -62,6 +69,7 @@
 			Email string `json:"email"`
 			Contact int `json:"contact"`
 			ProfilePic string `json:"profile_pic"`
+			Posts []Post `json:"posts"`
 		}
 			
 		var users []User
@@ -73,7 +81,21 @@
 			var uname, email, profile_pic string
 
 			rows.Scan(&id ,&fname, &lname, &uname, &email, &contact, &profile_pic)
-			users = append(users, User{id, fname, lname, uname, email, contact, profile_pic })
+
+			//creating a slice of posts for a particular user
+			posts := make([]Post,0)
+			rows2,err := db.Query("SELECT id, title, description, created from posts where posted_by='"+strconv.Itoa(id)+"';")
+			if err!=nil {
+				log.Fatal(err)
+			}
+			for rows2.Next() {
+				var id int 
+				var title, description, created string
+				rows2.Scan(&id, &title, &description, &created)
+				posts = append(posts, Post{id, title, description, created})
+			}
+
+			users = append(users, User{id, fname, lname, uname, email, contact, profile_pic, posts })
 		}
 		
 		usersBytes, _ := json.Marshal(&users)
