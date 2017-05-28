@@ -3,12 +3,15 @@ import { AppRegistry, Text, View, ListView, StyleSheet, AlertIOS, Button,
 		TouchableOpacity, Image
 } from "react-native"
 
+import HideableView from "react-native-hideable-view"
+
 export default class DataGrabbingRestComponent extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1!==r2})
 		this.state = {
-			userDataSource: ds
+			userDataSource: ds,
+			visible: false
 		}
 
 	}
@@ -50,6 +53,11 @@ export default class DataGrabbingRestComponent extends Component {
 	}
 
 	showUsers() {
+		this.setState(
+			{
+				visible: !this.state.visible
+			}
+		)
 		this.fetchUsers()
 	}
 	
@@ -61,11 +69,11 @@ export default class DataGrabbingRestComponent extends Component {
 		return (
 			<View style={styles.row}>
 				
-				<Image source={{uri: url}} style={{height: 100, width: 100}} />
+				<Image source={{uri: url}} style={{height: 100, width: 100}} /> 
 				<Text style={styles.rowText}> 
-					<Text style={{color: "green",fontWeight: "bold"}} >{user.firstname}{"\n"}</Text>
-					<Text style={{color: "blue"}} >{user.email} </Text>	
-					<Text style={{color: "gray"}} >{user.contact} </Text>	
+					<Text style={{color: "green",fontWeight: "bold"}} >{ user.firstname + " " + user.lastname }{"\n"}</Text>
+					<Text style={{color: "blue"}} >{ user.email } </Text>	
+					<Text style={{color: "gray", fontWeight: "bold"}} >{ (""+user.contact).slice(2) } </Text>	
 				</Text>
 
 			</View>
@@ -75,15 +83,17 @@ export default class DataGrabbingRestComponent extends Component {
 	render() {
 		return (
 				<View style={{borderRadius:5}}>
-				 <TouchableOpacity onPress={() => this.showUsers()} 
-				 	style={{margin: 10, marginLeft:10, marginRight: 10,borderRadius:5 }}
-				 >
-				 	<View>
-				 		<Text style={{backgroundColor:"#27ae60",borderRadius: 5, borderWidth: 1, borderColor: "#3498db", padding: 5, fontSize: 15,color: "white", textAlign: "center", fontWeight: "bold"}}>
-				 			See Users
-				 		</Text>
-				 	</View>
-				 </TouchableOpacity>	
+					<HideableView visible={!this.state.visible}>
+							 <TouchableOpacity onPress={() => this.showUsers()} 
+							 	style={{margin: 10, marginLeft:10, marginRight: 10,borderRadius:5 }}
+							 >
+							 	<View>
+							 		<Text style={{backgroundColor:"#27ae60",borderRadius: 5, borderWidth: 1, borderColor: "#3498db", padding: 5, fontSize: 15,color: "white", textAlign: "center", fontWeight: "bold"}}>
+							 			See Users
+							 		</Text>
+							 	</View>
+							 </TouchableOpacity>
+					</HideableView>
 					<ListView
 						dataSource = { this.state.userDataSource }
 						renderRow = { this.renderRow.bind(this) }

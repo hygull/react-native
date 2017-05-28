@@ -73,6 +73,8 @@ class CabBookingAboutScreen extends React.Component {
 	// static navigationOptions = {
 	// 	title: "About",
 	// }
+	
+
 	static navigationOptions = ({ navigation }) => ({
 		// title: `Hi, ${navigation.state.params.user}!`
 		title: "About"

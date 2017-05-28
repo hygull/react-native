@@ -327,5 +327,11 @@ Visit [here](https://reactnavigation.org/docs/intro/) to know about StackNavigat
 ```javascript
 npm install --save react-navigation
 ```
+# Hidable view
 
+Visie [here](https://www.npmjs.com/package/react-native-hideable-view)
+
+```javascript
+npm install --save react-native-hideable-view
+```
 
