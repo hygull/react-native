@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { AppRegistry, Text, View, ListView, StyleSheet, AlertIOS, Button, 
-		TouchableOpacity
+		TouchableOpacity, Image
 } from "react-native"
 
 export default class DataGrabbingRestComponent extends Component {
@@ -42,7 +42,7 @@ export default class DataGrabbingRestComponent extends Component {
 		.catch((error) => {
 			console.log("Error occured")
 			AlertIOS.alert("Error while GET request")
-			// throw error
+			throw error
 			// <Image source={{uri: url }} 
 			// 			style={{height: 100, width: 100}}
 			// 		/>
@@ -57,12 +57,15 @@ export default class DataGrabbingRestComponent extends Component {
 	renderRow(user) {
 		console.log(user.profile_pic)
 		var url = user.profile_pic
-
+		console.log(url)
 		return (
 			<View style={styles.row}>
+				
+				<Image source={{uri: url}} style={{height: 100, width: 100}} />
 				<Text style={styles.rowText}> 
-					
-					<Text style={{color:"green"}} >{user.firstname}</Text>	
+					<Text style={{color: "green",fontWeight: "bold"}} >{user.firstname}{"\n"}</Text>
+					<Text style={{color: "blue"}} >{user.email} </Text>	
+					<Text style={{color: "gray"}} >{user.contact} </Text>	
 				</Text>
 
 			</View>
