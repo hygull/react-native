@@ -123,10 +123,10 @@
 		w.Header().Set("Content-Type", "application/json")
 		r.ParseForm()
 
-		if r.Method == "GET" {
-			w.WriteHeader(http.StatusBadRequest)
-			w.Write(createErrorMessage(400, "GET method is not allowed, use POST"))
-		}
+		// if r.Method == "GET" {
+		// 	w.WriteHeader(http.StatusBadRequest)
+		// 	w.Write(createErrorMessage(400, "GET method is not allowed, use POST"))
+		// }
 
 		fmt.Println(r.Form["email"])
 		// fmt.Println(r.Form[""])

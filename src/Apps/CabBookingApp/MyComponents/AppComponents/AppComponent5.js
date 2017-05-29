@@ -1,6 +1,6 @@
 import React from "react"
 import { AppRegistry, Text, View, Button, Image, ScrollView, TextInput,
-	KeyboardAvoidingView, StyleSheet, WebView, TouchableOpacity
+	KeyboardAvoidingView, StyleSheet, WebView, TouchableOpacity, AlertIOS
  } from "react-native"
 import { StackNavigator } from "react-navigation"
 // import Video  from "react-native-video"
@@ -271,11 +271,21 @@ class SignUpScreen extends React.Component {
 		super()
 		this.state = {
 			email : "",
+			otp: 0
 		}
 	}	
 
 	static navigationOptions = {
 		title: "Create Account"
+	}
+
+	getOTP() {
+		fetch("http://127.0.0.1:8080/create/",{method:"POST", headers: {"Content-Type": "application/x-www-form-urlencoded", "Accept": "application/json"} ,body: 	JSON.stringify({"email": "rishikeshA"}) })
+		.then((response) => response.json())
+		.then((response) => { AlertIOS.alert(JSON.stringify(response)) })
+		.catch((error) => {
+			AlertIOS.alert("Error while OTP Request")
+		})
 	}
 
 	render() {
@@ -294,7 +304,7 @@ class SignUpScreen extends React.Component {
 							keyboarType="numeric"
 						/>
 						
-						<TouchableOpacity style={styles.login} >
+						<TouchableOpacity style={styles.login} onPress={() => { this.getOTP() }}>
 							<Text style={styles.login_txt}>
 								Get OTP
 							</Text>
