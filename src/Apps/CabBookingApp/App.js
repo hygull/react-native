@@ -3,4 +3,8 @@
 /*Keyboard is working in this stage*/
 //import "./MyComponents/AppComponents/AppComponent5"
 
-import "./MyComponents/AppComponents/AppComponent6"
+/*OTP submit navigation done*/
+//import "./MyComponents/AppComponents/AppComponent6"
+	
+import "./MyComponents/AppComponents/AppComponent7"
+

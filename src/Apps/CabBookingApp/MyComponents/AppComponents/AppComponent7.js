@@ -254,6 +254,7 @@ class LoginScreen extends React.Component {
 						<TextInput
 							placeholder="Email"
 							placeholderTextColor="#bdc3c7"
+							autoCapitalize="none"
 							returnKeyType="next"
 							style={styles.text_input}
 							autoFocus
@@ -277,8 +278,33 @@ class LoginScreen extends React.Component {
 }
 
 class OtpEnteringScreen extends React.Component {
-	static navigationOptions = {
-		title: "OTP Validation"
+
+	constructor() {
+		super()
+		this.state = {
+			typedOtp: 0 
+		}
+	}
+
+	static navigationOptions = ({navigation}) => ({
+		title: `OTP , ${navigation.state.params.passedOtp}`
+	})
+
+	testOtp(){
+		const { navigate } = this.props.navigation;
+		const {params} = this.props.navigation.state;
+		// AlertIOS.alert("Here I am")
+
+		console.log(params.passedOtp, this.state.typedOtp)
+		console.log(typeof params.passedOtp, typeof this.state.typedOtp)
+		console.log(params.passedOtp != this.state.typedOtp)
+		if(params.passedOtp != this.state.typedOtp){
+			AlertIOS.alert("Wrong OTP, Retry")
+			navigate("SignUp")
+		} else {
+			AlertIOS.alert("OTP is correct")
+			navigate("CabBook")
+		}
 	}
 
 	render() {
@@ -293,13 +319,14 @@ class OtpEnteringScreen extends React.Component {
 							placeholderTextColor="#bdc3c7"
 							returnKeyType="go"
 							style={styles.text_input}
+							onChangeText={(typedOtp) => this.setState({typedOtp})}
 							autoFocus
 							
-							keyboardType="numeric"
+							
 						/>
 						
-						<TouchableOpacity style={styles.login}>
-							<Text style={styles.login_txt}>
+						<TouchableOpacity style={styles.login} onPress={() => {this.testOtp() }}>
+							<Text style={styles.login_txt} >
 								Submit
 							</Text>
 						</TouchableOpacity>
@@ -332,7 +359,8 @@ class SignUpScreen extends React.Component {
 			if(response.status==200){
 				AlertIOS.alert(JSON.stringify("OTP: "+response.otp))
 				console.log("Redirecting to CabBook Screen") 
-				navigate("OtpEnteringScreen")
+				navigate("OtpEnteringScreen", {passedOtp: response.otp})
+				return
 			} else {
 				AlertIOS.alert(JSON.stringify("Error Message: "+response.message)) 
 			}
@@ -350,6 +378,7 @@ class SignUpScreen extends React.Component {
 	
 						<TextInput
 							placeholder="Email"
+							autoCapitalize="none"
 							placeholderTextColor="#bdc3c7"
 							returnKeyType="next"
 							style={styles.text_input}

@@ -168,9 +168,35 @@
 		w.Write(responseBytes)
 	}
 
+	// func checkOtp(w http.ResponseWriter, r *http.Request) {
+	// 	w.Header().Set("Content-Type", "application/json")
+	// 	r.ParseForm()
+
+	// 	// if r.Method == "GET" {
+	// 	// 	w.WriteHeader(http.StatusBadRequest)
+	// 	// 	w.Write(createErrorMessage(400, "GET method is not allowed, use POST"))
+	// 	// }
+	// 	fmt.Println(r.Form)
+	// 	// email := ""
+	// 	for k,v:=range r.Form {
+	// 		//Getting email
+	// 		var otpObj map[string]interface{}
+	// 		err := json.Unmarshal([]byte(k),&otpObj)
+	// 		fmt.Println("Got",otpObj, reflect.TypeOf(otpObj))
+	// 		fmt.Println(k, reflect.TypeOf(k))
+
+	// 		fmt.Println(otpObj, err)
+	// 		otp := otpObj["otp"]
+	// 		fmt.Println(otp)
+
+	// 		//Validating OTP	
+			
+	// 	}
+	// }
 	func main() {
 		http.HandleFunc("/users/", users)	
 		http.HandleFunc("/create/", createUsers)
+		// http.HandleFunc("/check-otp/", checkOtp)
 		http.ListenAndServe("0.0.0.0:8080", nil)
 	}
 
