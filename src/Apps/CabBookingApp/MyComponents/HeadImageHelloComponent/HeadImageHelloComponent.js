@@ -22,7 +22,7 @@ export default class HeadImageHelloComponent extends Component {
                           <View style={styles.container}>
                             <Text style={{fontSize:20, color:"black", marginTop:40}}> Welcome to </Text>
                             
-                            <Text style={{fontWeight:"bold", color:"green", fontSize:30, marginBottom:1}}>CabBooking Service</Text>
+                            <Text style={{fontWeight:"bold", color:"green", fontSize:30, marginBottom:1}}>CabBooking App</Text>
                             
                             <Text style={styles.company}>
                               Developed at{" "}

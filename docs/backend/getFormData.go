@@ -145,7 +145,7 @@
 			fmt.Println(email)
 
 			//Validating Email
-			matched, _ := regexp.MatchString(`^[a-z0-9]+@[a-z]{2,4}\.[a-z]{2,3}$`, email.(string))
+			matched, _ := regexp.MatchString(`^[a-z0-9]+@[a-z]{2,5}\.[a-z]{2,3}$`, email.(string))
 			if !matched {
 				w.Write(createErrorMessage(400, "Provide a proper mail id"))
 				return
