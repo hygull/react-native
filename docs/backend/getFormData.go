@@ -34,6 +34,8 @@
 	import "encoding/json"
 	import "strconv"
 	import "fmt"
+	import "reflect"
+	import "regexp"
 	import (
 		_"github.com/go-sql-driver/mysql"	
 		"database/sql"
@@ -127,20 +129,47 @@
 		// 	w.WriteHeader(http.StatusBadRequest)
 		// 	w.Write(createErrorMessage(400, "GET method is not allowed, use POST"))
 		// }
+		fmt.Println(r.Form)
+		// email := ""
+		for k,v:=range r.Form {
+			//Getting email
+			fmt.Println(k, v, reflect.TypeOf(k), reflect.TypeOf(v))
 
-		fmt.Println(r.Form["email"])
+			var emailObj map[string]interface{}
+			err := json.Unmarshal([]byte(k),&emailObj)
+			fmt.Println(emailObj, reflect.TypeOf(emailObj))
+			fmt.Println(k, reflect.TypeOf(k))
+
+			fmt.Println(emailObj, err)
+			email := emailObj["email"]
+			fmt.Println(email)
+
+			//Validating Email
+			matched, _ := regexp.MatchString(`^[a-z0-9]+@[a-z]{2,4}\.[a-z]{2,3}$`, email.(string))
+			if !matched {
+				w.Write(createErrorMessage(400, "Provide a proper mail id"))
+				return
+			}	
+
+		}
+		println()
+		// fmt.Println(r.Form["email"])
+		// fmt.Println(r.URL.Query()["email"])
+		// fmt.Println(r.URL.Query().Get("email"))
+
 		// fmt.Println(r.Form[""])
 		// fmt.Println(r.Form["name"])
 		// fmt.Println(r.Form["description"])
 		// fmt.Println(r.Form["url"])
 		m := make(map[string]interface{})
 		m["otp"] = 199267
+		m["status"] = 200
 		responseBytes, _ := json.Marshal(m)
 		w.Write(responseBytes)
 	}
 
 	func main() {
-		http.HandleFunc("/users/", users)
+		http.HandleFunc("/users/", users)	
 		http.HandleFunc("/create/", createUsers)
 		http.ListenAndServe("0.0.0.0:8080", nil)
 	}

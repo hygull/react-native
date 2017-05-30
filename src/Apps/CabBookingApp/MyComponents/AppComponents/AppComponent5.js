@@ -21,7 +21,7 @@ class CabBookingHomeScreen extends React.Component {
 
 		return 	<View>
 					<HeadImageHelloComponent />
-					<View style={styles.view1}>
+					<View style={styles.view3	}>
 						<Button 
 							onPress={ () => 
 								navigate("SignUp")
@@ -280,9 +280,15 @@ class SignUpScreen extends React.Component {
 	}
 
 	getOTP() {
-		fetch("http://127.0.0.1:8080/create/",{method:"POST", headers: {"Content-Type": "application/x-www-form-urlencoded", "Accept": "application/json"} ,body: 	JSON.stringify({"email": "rishikeshA"}) })
+		fetch("http://127.0.0.1:8080/create/",{method: "POST", headers: {"Content-Type": "application/x-www-form-urlencoded", "Accept": "application/json"} ,body: 	JSON.stringify({email: this.state.email}) })
 		.then((response) => response.json())
-		.then((response) => { AlertIOS.alert(JSON.stringify(response)) })
+		.then((response) => { 
+			if(response.status==200){
+				AlertIOS.alert(JSON.stringify("OTP: "+response.otp)) 
+			} else {
+				AlertIOS.alert(JSON.stringify("Error Message: "+response.message)) 
+			}
+		})
 		.catch((error) => {
 			AlertIOS.alert("Error while OTP Request")
 		})
