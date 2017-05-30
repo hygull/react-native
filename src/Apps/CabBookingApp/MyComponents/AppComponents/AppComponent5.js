@@ -29,6 +29,14 @@ class CabBookingHomeScreen extends React.Component {
 							title="Create Account"
 						/>
 					</View>
+					<View style={styles.view3	}>
+						<Button 
+							onPress={ () => 
+								navigate("Login")
+							} 
+							title="Sign in"
+						/>
+					</View>
 					<View style={styles.view1}>
 						<Button 
 							onPress={ () => 
