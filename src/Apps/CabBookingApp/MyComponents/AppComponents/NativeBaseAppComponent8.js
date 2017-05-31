@@ -3,6 +3,7 @@ import { AppRegistry, Text, View, Button, Image, ScrollView, TextInput,
 	KeyboardAvoidingView, StyleSheet, WebView, TouchableOpacity, AlertIOS
  } from "react-native"
 import { StackNavigator } from "react-navigation"
+import Cookie from "react-native-cookie"
 // import Video  from "react-native-video"
 var Video = require("react-native-video")
 
@@ -19,10 +20,13 @@ class CabBookingHomeScreen extends React.Component {
 		//Linking to About Screen
 		const { navigate } = this.props.navigation
 
-		return 	<View style={{backgroundColor: "#9fdfbf", flex: 1, alignItems: "center", justifyContent: "center"}}>
+		return 	<View style={{backgroundColor: "#d8f3d8", flex: 1, alignItems: "center", justifyContent: "center"}}>
 					<Image source={require("../../img/CAB2.png")}  style={{ height: 120, width: 120}}/>
 					<Text style={{color: "black",fontWeight: "bold", fontSize: 25}}> CabBooking App</Text>
-					<Text style={{color: "navy", fontSize: 10}}>Developed at Offlinetrend solutions pvt ltd</Text>
+					<Text style={{color: "navy", fontSize: 10,}}>Developed at  {" "}
+						<Text style={{color: "blue", fontSize: 10, fontWeight: "bold"}}>Offlinetrend solutions pvt ltd</Text>
+					
+					</Text>
 
 					<View style={{ flexDirection: "row"}}> 
 						<TouchableOpacity style={[styles.booknow, { marginRight: 20}]} onPress={() => navigate("SignUp")}>
@@ -109,8 +113,7 @@ class CabBookingScreen extends React.Component {
 							</Text>
 						</TouchableOpacity>
 				</View>
-				</KeyboardAvoidingView>
-			
+				</KeyboardAvoidingView>	
 	}
 }
 
@@ -320,11 +323,13 @@ class SignUpScreen extends React.Component {
 	getOTP() {
 		const { navigate } = this.props.navigation;
 
-		fetch("http://127.0.0.1:8080/create/",{method: "POST", headers: {"Content-Type": "application/x-www-form-urlencoded", "Accept": "application/json"} ,body: 	JSON.stringify({email: this.state.email}) })
+		fetch("http://127.0.0.1:9000/create/",{method: "POST", headers: {"Content-Type": "application/x-www-form-urlencoded", "Accept": "application/json"} ,body: 	JSON.stringify({email: this.state.email}) })
 		.then((response) => response.json())
 		.then((response) => { 
 			if(response.status==200){
 				AlertIOS.alert(JSON.stringify("OTP: "+response.otp))
+
+				// Cookie.set("/cab-booking/signup/", { path: "signup", email: "email@gmail.com" }).then(console.log("Successfully set the cookie"))
 				console.log("Redirecting to CabBook Screen") 
 				navigate("OtpEnteringScreen", {passedOtp: response.otp})
 				return
