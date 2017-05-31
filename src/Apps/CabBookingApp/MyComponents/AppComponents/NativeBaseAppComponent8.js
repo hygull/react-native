@@ -19,56 +19,22 @@ class CabBookingHomeScreen extends React.Component {
 		//Linking to About Screen
 		const { navigate } = this.props.navigation
 
-		return 	<View>
-					<HeadImageHelloComponent />
-					<View style={styles.view3	}>
-						<Button 
-							onPress={ () => 
-								navigate("SignUp")
-							} 
-							title="Create Account"
-						/>
-					</View>
-					<View style={styles.view2	}>
-						<Button 
-							onPress={ () => 
-								navigate("Login")
-							} 
-							title="Sign in"
-						/>
-					</View>
-					<View style={styles.view1}>
-						<Button 
-							onPress={ () => 
-								navigate("Chat", { user: "Rojert" })
-							} 
-							title="About"
-						/>
-					</View>
-					<View style={styles.view2}>
-						<Button 
-							onPress={ () => 
-								navigate("CabBook")
-							} 
-							title="Get a Cab"
-						/>
-					</View>
-					<View style={styles.view3}>
-						<Button 
-							onPress={ () => 
-								navigate("Village")
-							} 
-							title="Pics"
-						/>
-					</View>
+		return 	<View style={{backgroundColor: "#9fdfbf", flex: 1, alignItems: "center", justifyContent: "center"}}>
+					<Image source={require("../../img/CAB2.png")}  style={{ height: 120, width: 120}}/>
+					<Text style={{color: "black",fontWeight: "bold", fontSize: 25}}> CabBooking App</Text>
+					<Text style={{color: "navy", fontSize: 10}}>Developed at Offlinetrend solutions pvt ltd</Text>
 
-					<View style={styles.view2}>
-						<Button 
-							onPress={ () => 
-								navigate("Youtube")
-							} 
-							title="Youtube"
-						/>
+					<View style={{ flexDirection: "row"}}> 
+						<TouchableOpacity style={[styles.booknow, { marginRight: 20}]} onPress={() => navigate("SignUp")}>
+							<Text style={[styles.booknow_txt, {textAlign: "center", fontFamily: "Thonburi"}]}>
+								REGISTER
+							</Text>
+						</TouchableOpacity>
+						<TouchableOpacity style={styles.booknow} onPress={() => navigate("Login")}>
+							<Text style={[styles.booknow_txt, {textAlign: "center", fontFamily: "Thonburi"}]}>
+								LOGIN
+							</Text>
+						</TouchableOpacity>
 					</View>
 				</View>
 
@@ -209,7 +175,7 @@ class CabBookingPicScreen extends React.Component {
 						
 
 					</ScrollView>
-					
+					<GeoComponent />
 				</View>
 
 	}
@@ -248,7 +214,7 @@ class LoginScreen extends React.Component {
 		return <KeyboardAvoidingView behavior="padding" style={styles.keyboard2}>
 			<View style={styles.login_container_view}>
 					
-					<Image source={require('../../img/rishi.jpg')} style={styles.pic_small}/>
+					<Image source={require('../../img/USER2.png')} style={styles.pic_small}/>
 	
 						<TextInput
 							placeholder="Email"
@@ -271,7 +237,7 @@ class LoginScreen extends React.Component {
 							</Text>
 						</TouchableOpacity>
 						<Text style={styles.txt}>{this.state.email}</Text>
-						<GeoComponent />
+						
 				</View>
 			</KeyboardAvoidingView>
 	}
@@ -375,7 +341,7 @@ class SignUpScreen extends React.Component {
 		return <KeyboardAvoidingView behavior="padding" style={styles.keyboard2}>
 			<View style={styles.login_container_view}>
 					
-					<Image source={require('../../img/user.png')} style={styles.pic_small}/>
+					<Image source={require('../../img/USER2.png')} style={styles.pic_small}/>
 	
 						<TextInput
 							placeholder="Email"
@@ -495,7 +461,7 @@ const styles = StyleSheet.create({
 	},
 
 	pic_small: {
-		height: 85, width:75,
+		height: 85, width:85,
 		borderRadius:10
 
 	},
