@@ -60,7 +60,7 @@
 			Lname string `json:"lastname"`
 			Uname string `json:"username"`
 			Email string `json:"email"`
-			Contact int `json:"contact"`
+			Contact int  `json:"contact"`
 			ProfilePic string `json:"profile_pic"`
 		}
 			

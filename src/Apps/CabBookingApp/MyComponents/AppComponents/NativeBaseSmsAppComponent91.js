@@ -4,6 +4,7 @@ import { AppRegistry, Text, View, Button, Image, ScrollView, TextInput,
  } from "react-native"
 import { StackNavigator } from "react-navigation"
 import Cookie from "react-native-cookie"
+import md5 from "react-native-md5"
 // import Video  from "react-native-video"
 var Video = require("react-native-video")
 
@@ -20,26 +21,23 @@ class CabBookingHomeScreen extends React.Component {
 		//Linking to About Screen
 		const { navigate } = this.props.navigation
 
-		return 	<View style={{backgroundColor: "#d8f3d8", flex: 1, alignItems: "center", justifyContent: "center"}}>
-					<Image source={require("../../img/CAB2.png")}  style={{ height: 120, width: 120}}/>
-					<Text style={{color: "black",fontWeight: "bold", fontSize: 25}}> CabBooking App</Text>
-					<Text style={{color: "navy", fontSize: 10,}}>An {" "}
-						<Text style={{color: "blue", fontSize: 10, fontWeight: "bold"}}>Indian app to book taxies/cabs</Text>
+		return 	<View style={{backgroundColor: "#d8f3d8", flex: 1, alignItems: "center", justifyContent: "flex-start"}}>
+					<Image source={require("../../img/car_gif3.gif")}  style={{ height: 200, width: 375}}/>
+					<Text style={{color: "#34495e",fontWeight: "bold", fontSize: 35, marginTop:10}}> CabBooking App</Text>
+					<Text style={{color: "navy", fontSize: 15,}}>An {" "}
+						<Text style={{color: "gray", fontSize: 14, fontWeight: "bold"}}>Indian app to book taxies/cabs</Text>
 					
 					</Text>
 
-					<View style={{ flexDirection: "row"}}> 
-						<TouchableOpacity style={[styles.booknow, { marginRight: 20}]} onPress={() => navigate("SignUp")}>
-							<Text style={[styles.booknow_txt, {textAlign: "center", fontFamily: "Thonburi"}]}>
-								REGISTER
+					
+						
+						<TouchableOpacity style={styles.buttonStyle}  onPress={() => navigate("SignUp")}>
+							<Text style={styles.textStyle}> 
+								Book your ride	
 							</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={styles.booknow} onPress={() => navigate("Login")}>
-							<Text style={[styles.booknow_txt, {textAlign: "center", fontFamily: "Thonburi"}]}>
-								LOGIN
-							</Text>
-						</TouchableOpacity>
-					</View>
+						
+					
 				</View>
 
 	}
@@ -268,7 +266,11 @@ class OtpEnteringScreen extends React.Component {
 		console.log(params.passedOtp, this.state.typedOtp)
 		console.log(typeof params.passedOtp, typeof this.state.typedOtp)
 		console.log(params.passedOtp != this.state.typedOtp)
-		if(params.passedOtp != this.state.typedOtp){
+		console.log("Message from previous screen ", params.passedOtp)
+		console.log("Type ", typeof params.passedOtp)
+		console.log(params)
+		console.log(params.passedOtp.slice(12) )
+		if(params.passedOtp.slice(12) != this.state.typedOtp){
 			AlertIOS.alert("Wrong OTP, Retry")
 			navigate("SignUp")
 		} else {
@@ -283,16 +285,14 @@ class OtpEnteringScreen extends React.Component {
 			<View style={styles.login_container_view}>
 					
 					<Image source={require('../../img/otp.png')} style={styles.pic_small}/>
-	
+						<Text>We have sent OTP to your mobile, please enter it below{"\n"}</Text>
 						<TextInput
 							placeholder="Enter the OTP that you got"
 							placeholderTextColor="#bdc3c7"
 							returnKeyType="go"
 							style={styles.text_input}
 							onChangeText={(typedOtp) => this.setState({typedOtp})}
-							autoFocus
-							
-							
+							autoFocus		
 						/>
 						
 						<TouchableOpacity style={styles.login} onPress={() => {this.testOtp() }}>
@@ -311,12 +311,7 @@ class SignUpScreen extends React.Component {
 	constructor() {
 		super()
 		this.state = {
-			fname: "",
-			lname: "",
-			contact: "",
-			email : "",
-			password: "",
-			conf_password: "",
+			number: 0,
 			otp: 0
 		}
 	}	
@@ -328,19 +323,33 @@ class SignUpScreen extends React.Component {
 
 	getOTP() {
 		const { navigate } = this.props.navigation;
-
-		fetch("http://127.0.0.1:8080/create/",{method: "POST", headers: {"Content-Type": "application/x-www-form-urlencoded", "Accept": "application/json"} ,body: 	JSON.stringify({email: this.state.email}) })
+		console.log("Great")
+		// fetch("http://127.0.0.1:8080/create/",{method: "POST", headers: {"Content-Type": "application/x-www-form-urlencoded", "Accept": "application/json"} ,body: 	JSON.stringify({email: this.state.email}) })
+		// fetch("http://127.0.0.1:8080/v1/login/",{method: "POST", headers: {"Content-Type": "application/x-www-form-urlencoded", "Accept": "application/json"} ,body: 	JSON.stringify({"mob": this.state.number, "app_key": "a9316ba8085e74e780444c0d598d7bbe"}) }) //Rishikesh
+		// fetch("http://127.0.0.1:8080/v1/login/",{method: "POST", headers: {"Content-Type": "application/x-www-form-urlencoded", "Accept": "application/json"} ,body: 	JSON.stringify({"mob": this.state.number, "app_key" : "04b6290958eb07b8628d13e7aa4fee9d"}) }) //Rathnakara Sir
+				fetch("http://127.0.0.1:8080/v1/login/",{method: "POST", headers: {"Content-Type": "application/x-www-form-urlencoded", "Accept": "application/json"} ,body: 	JSON.stringify({"mob": this.state.number, "app_key": md5.hex_md5( this.state.number+"offlinetrend")}) }) //all
 		.then((response) => response.json())
 		.then((response) => { 
+			console.log("status",response.success, typeof response.success)
+			console.log("Response",response.status)
+
+			// console.log(md5.hex_md5("9740333323offlinetrend"))	//matched
+
+			// console.log(md5.b64_md5("9740333323offlinetrend"))
+
+			// console.log(md5.str_md5("9740333323offlinetrend"))
+
 			if(response.status==200){
-				AlertIOS.alert(JSON.stringify("OTP: "+response.otp))
+				// AlertIOS.alert(JSON.stringify("OTP: "+response.message))
 
 				// Cookie.set("/cab-booking/signup/", { path: "signup", email: "email@gmail.com" }).then(console.log("Successfully set the cookie"))
 				console.log("Redirecting to CabBook Screen") 
-				navigate("OtpEnteringScreen", {passedOtp: response.otp})
+				console.log("Got OTP from backend "+response.message)
+				navigate("OtpEnteringScreen", {passedOtp: response.message})
 				return
 			} else {
-				AlertIOS.alert(JSON.stringify("Error Message: "+response.message)) 
+				console.log(response)
+				AlertIOS.alert(JSON.stringify("Error Message: "+response)) 
 			}
 		})
 		.catch((error) => {
@@ -353,26 +362,6 @@ class SignUpScreen extends React.Component {
 			<View style={styles.login_container_view}>
 					
 					<Image source={require('../../img/USER2.png')} style={styles.pic_small}/>
-	
-						<TextInput
-							placeholder="First name"
-							autoCapitalize="none"
-							placeholderTextColor="#bdc3c7"
-							returnKeyType="next"
-							style={styles.text_input}
-							autoFocus
-							onChangeText={(fname) => this.setState({fname})}
-						/>
-						
-						<TextInput
-							placeholder="Last name"
-							autoCapitalize="none"
-							placeholderTextColor="#bdc3c7"
-							returnKeyType="next"
-							style={styles.text_input}
-							autoFocus
-							onChangeText={(lname) => this.setState({lanme})}
-						/>
 
 						<TextInput
 							placeholder="Mobile Number"
@@ -381,47 +370,14 @@ class SignUpScreen extends React.Component {
 							returnKeyType="next"
 							style={styles.text_input}
 							autoFocus
-							onChangeText={(lname) => this.setState({lanme})}
+							onChangeText={(number) => this.setState({number})}
 						/>
-
-						<TextInput
-							placeholder="Email"
-							autoCapitalize="none"
-							placeholderTextColor="#bdc3c7"
-							returnKeyType="next"
-							style={styles.text_input}
-							autoFocus
-							onChangeText={(email) => this.setState({email})}
-							
-						/>
-
-						<TextInput
-							placeholder="Password"
-							autoCapitalize="none"
-							placeholderTextColor="#bdc3c7"
-							returnKeyType="next"
-							style={styles.text_input}
-							autoFocus
-							onChangeText={(password) => this.setState({password})}
-						/>
-
-						<TextInput
-							placeholder="Confirm password"
-							autoCapitalize="none"
-							placeholderTextColor="#bdc3c7"
-							returnKeyType="next"
-							style={styles.text_input}
-							autoFocus
-							onChangeText={(conf_password) => this.setState({conf_password})}
-						/>
-
 						<TouchableOpacity style={styles.login} onPress={() => { this.getOTP() }}>
 							<Text style={styles.login_txt}>
-								Register
+								Login
 							</Text>
 						</TouchableOpacity>
-						<Text style={styles.txt}>{this.state.email}</Text>
-				</View>
+			</View>
 			</KeyboardAvoidingView>
 	}
 }
@@ -510,6 +466,8 @@ const styles = StyleSheet.create({
 	booknow: {
 		backgroundColor: "#3498db",
 		marginTop: 15,
+		// flex: 1,
+		alignSelf: "stretch",
 	},
 
 	booknow_txt: {
@@ -519,6 +477,8 @@ const styles = StyleSheet.create({
 		fontSize: 15,
 		fontFamily: "AppleSDGothicNeo-Regular",
 		borderRadius: 5,
+		borderColor: "white",
+		borderWidth: 1
 	},
 
 	pic_small: {
@@ -536,6 +496,25 @@ const styles = StyleSheet.create({
 		paddingTop: 40,
 		backgroundColor:"#1abc9c",
 	},
+	textStyle: {
+		alignSelf: "center",
+		color: "white",
+		fontSize: 16,
+		fontWeight: '600',
+		paddingBottom: 10,
+		paddingTop: 10,
+	},
+	buttonStyle: {
+		// flex: 1,
+		alignSelf: "stretch",
+		backgroundColor: "#34495e",
+		borderRadius: 5,
+		borderWidth: 1,
+		borderColor: "#007aff",
+		marginLeft: 5,
+		marginRight: 5,
+		marginTop:50,
+	}
 })
 
 AppRegistry.registerComponent("CabBookingApp", () => CabBookingApp)

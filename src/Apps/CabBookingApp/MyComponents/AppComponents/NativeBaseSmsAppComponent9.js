@@ -28,18 +28,15 @@ class CabBookingHomeScreen extends React.Component {
 					
 					</Text>
 
-					<View style={{ flexDirection: "row"}}> 
-						<TouchableOpacity style={[styles.booknow, { marginRight: 20}]} onPress={() => navigate("SignUp")}>
+				<View style={{ flexDirection: "row",borderRadius:5}}> 
+					<TouchableOpacity style={[styles.booknow, { marginRight: 20}]} onPress={() => navigate("SignUp")}>
 							<Text style={[styles.booknow_txt, {textAlign: "center", fontFamily: "Thonburi"}]}>
-								REGISTER
+								Book your ride
 							</Text>
-						</TouchableOpacity>
-						<TouchableOpacity style={styles.booknow} onPress={() => navigate("Login")}>
-							<Text style={[styles.booknow_txt, {textAlign: "center", fontFamily: "Thonburi"}]}>
-								LOGIN
-							</Text>
-						</TouchableOpacity>
-					</View>
+					</TouchableOpacity>
+				</View>		
+						
+					
 				</View>
 
 	}
@@ -311,12 +308,7 @@ class SignUpScreen extends React.Component {
 	constructor() {
 		super()
 		this.state = {
-			fname: "",
-			lname: "",
-			contact: "",
-			email : "",
-			password: "",
-			conf_password: "",
+			number: 0,
 			otp: 0
 		}
 	}	
@@ -328,19 +320,23 @@ class SignUpScreen extends React.Component {
 
 	getOTP() {
 		const { navigate } = this.props.navigation;
-
-		fetch("http://127.0.0.1:8080/create/",{method: "POST", headers: {"Content-Type": "application/x-www-form-urlencoded", "Accept": "application/json"} ,body: 	JSON.stringify({email: this.state.email}) })
+		console.log("Great")
+		// fetch("http://127.0.0.1:8080/create/",{method: "POST", headers: {"Content-Type": "application/x-www-form-urlencoded", "Accept": "application/json"} ,body: 	JSON.stringify({email: this.state.email}) })
+		fetch("http://127.0.0.1:8080/v1/login/",{method: "POST", headers: {"Content-Type": "application/x-www-form-urlencoded", "Accept": "application/json"} ,body: 	JSON.stringify({"mob": this.state.number, "app_key": "a9316ba8085e74e780444c0d598d7bbe"}) })
 		.then((response) => response.json())
 		.then((response) => { 
+			console.log("status",response.success, typeof response.success)
+			console.log("Response",response.status)
 			if(response.status==200){
-				AlertIOS.alert(JSON.stringify("OTP: "+response.otp))
+				AlertIOS.alert(JSON.stringify("OTP: "+response.message))
 
 				// Cookie.set("/cab-booking/signup/", { path: "signup", email: "email@gmail.com" }).then(console.log("Successfully set the cookie"))
 				console.log("Redirecting to CabBook Screen") 
 				navigate("OtpEnteringScreen", {passedOtp: response.otp})
 				return
 			} else {
-				AlertIOS.alert(JSON.stringify("Error Message: "+response.message)) 
+				console.log(response)
+				AlertIOS.alert(JSON.stringify("Error Message: "+response)) 
 			}
 		})
 		.catch((error) => {
@@ -353,26 +349,6 @@ class SignUpScreen extends React.Component {
 			<View style={styles.login_container_view}>
 					
 					<Image source={require('../../img/USER2.png')} style={styles.pic_small}/>
-	
-						<TextInput
-							placeholder="First name"
-							autoCapitalize="none"
-							placeholderTextColor="#bdc3c7"
-							returnKeyType="next"
-							style={styles.text_input}
-							autoFocus
-							onChangeText={(fname) => this.setState({fname})}
-						/>
-						
-						<TextInput
-							placeholder="Last name"
-							autoCapitalize="none"
-							placeholderTextColor="#bdc3c7"
-							returnKeyType="next"
-							style={styles.text_input}
-							autoFocus
-							onChangeText={(lname) => this.setState({lanme})}
-						/>
 
 						<TextInput
 							placeholder="Mobile Number"
@@ -381,47 +357,14 @@ class SignUpScreen extends React.Component {
 							returnKeyType="next"
 							style={styles.text_input}
 							autoFocus
-							onChangeText={(lname) => this.setState({lanme})}
+							onChangeText={(number) => this.setState({number})}
 						/>
-
-						<TextInput
-							placeholder="Email"
-							autoCapitalize="none"
-							placeholderTextColor="#bdc3c7"
-							returnKeyType="next"
-							style={styles.text_input}
-							autoFocus
-							onChangeText={(email) => this.setState({email})}
-							
-						/>
-
-						<TextInput
-							placeholder="Password"
-							autoCapitalize="none"
-							placeholderTextColor="#bdc3c7"
-							returnKeyType="next"
-							style={styles.text_input}
-							autoFocus
-							onChangeText={(password) => this.setState({password})}
-						/>
-
-						<TextInput
-							placeholder="Confirm password"
-							autoCapitalize="none"
-							placeholderTextColor="#bdc3c7"
-							returnKeyType="next"
-							style={styles.text_input}
-							autoFocus
-							onChangeText={(conf_password) => this.setState({conf_password})}
-						/>
-
 						<TouchableOpacity style={styles.login} onPress={() => { this.getOTP() }}>
 							<Text style={styles.login_txt}>
-								Register
+								Login
 							</Text>
 						</TouchableOpacity>
-						<Text style={styles.txt}>{this.state.email}</Text>
-				</View>
+			</View>
 			</KeyboardAvoidingView>
 	}
 }

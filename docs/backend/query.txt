@@ -1,0 +1,9 @@
+insert into products(title, image, price, stock_status, target_url) values("The Rise of Sivagami : Bahubali : Before The Beginning  (English, Paperback, Anand Neelakantan)", "https://rukminim1.flixcart.com/image/832/832/book/4/4/6/the-rise-of-sivagami-original-imaesazzthcgmmfh.jpeg", 150, 0, "https://www.flipkart.com/rise-sivagami-bahubali-before-beginning/p/itmeryjfuy2gdsdx?pid=9789386224446&srno=s_1_2&otracker=search&lid=LSTBOK97893862244469J2GCG&qH=7d8949bcbf85067f");
+
+
+
+
+
+
+
+

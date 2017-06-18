@@ -1,0 +1,113 @@
+-- MySQL dump 10.13  Distrib 5.7.18, for macos10.12 (x86_64)
+--
+-- Host: localhost    Database: practice_db
+-- ------------------------------------------------------
+-- Server version	5.7.18
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `posts`
+--
+
+DROP TABLE IF EXISTS `posts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `posts` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `title` text NOT NULL,
+  `description` text NOT NULL,
+  `posted_by` bigint(20) DEFAULT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `posted_by` (`posted_by`),
+  CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`posted_by`) REFERENCES `users` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `posts`
+--
+
+LOCK TABLES `posts` WRITE;
+/*!40000 ALTER TABLE `posts` DISABLE KEYS */;
+INSERT INTO `posts` VALUES (1,'Getting started with MySQL','Excellent Database system',1,'2017-05-25 18:30:00'),(3,'GIT','Version Control System',3,'2017-05-21 18:30:00'),(4,'Quora','Q&A website',4,'2017-05-21 18:30:00'),(5,'C/C++ - Pointer','Pointers are variable that can hold address of another variable of same type',1,'2017-05-27 09:44:35'),(6,'Erica','A beautiful talking Robot that has been created by Hiroshi Isiguro',1,'2017-05-27 10:54:38'),(7,'Android','An OS for mobile phones',2,'2017-05-27 10:56:42'),(8,'Color Picker','We can create a nice Color picker using HTML, CSS & JS',5,'2017-05-27 10:58:29'),(9,'Enjoy Daily','We should enjoy daily by reading books, watching movie etc.',5,'2017-05-27 10:59:54'),(10,'Angular 2','Angular 2 is very nice. We can create dynamic sites using TypeScript, HTML, CSS.',3,'2017-05-27 11:01:30'),(11,'Ajax','Updating webpage without reloading(using API calls)',4,'2017-05-27 11:02:31'),(12,'.NET','Dot Net is very excellent as we can create fully featured web apps.',4,'2017-05-27 11:03:53'),(13,'map() method','map() method is very useful for operating on list of data',3,'2017-05-27 11:16:50'),(14,'TypeScript','TypeScript is very nice.A typed superset of JavaScript',3,'2017-05-27 11:27:54'),(15,'Java8','A great object oriented programming language. Most popular mow a days.',5,'2017-05-27 11:28:49'),(16,'Java8 - String','Strings are sequence of characters. In java, it is an object that denotes sequence of characters.',4,'2017-05-27 11:30:54');
+/*!40000 ALTER TABLE `posts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `products`
+--
+
+DROP TABLE IF EXISTS `products`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `products` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `title` text NOT NULL,
+  `image` text NOT NULL,
+  `price` float NOT NULL,
+  `stock_status` tinyint(1) NOT NULL,
+  `target_url` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `products`
+--
+
+LOCK TABLES `products` WRITE;
+/*!40000 ALTER TABLE `products` DISABLE KEYS */;
+INSERT INTO `products` VALUES (1,'Nutty Gritties Pumpkin Seeds(120 g Pack of 1)','http://i.huffpost.com/gadgets/slideshows/366038/slide_366038_4163042_free.jpg',321,1,'https://www.flipkart.com/nutty-gritties-pumpkin-seeds/p/itmesrcareugjsvj?pid=EDSE9XHRGZEKNNV6&affid=xaneemgmai'),(2,'Muscletech Platinum Iso-Zero Whey Protein  (680 g, Unflavored)','https://rukminim1.flixcart.com/image/832/832/protein-supplement/e/h/v/platinum-iso-zero-unflavored-muscletech-680-original-imaeatuxmewgjfbk.jpeg',4235,1,'https://www.flipkart.com/muscletech-platinum-iso-zero-whey-protein/p/itmeavz3rggzuzxz?pid=PSLEAVZ3XF3QAEHV&affid=xaneemgmai'),(3,'Chhattisgari Pumpkin Seeds(130g Pack of 1)','http://i.huffpost.com/gadgets/slideshows/366038/slide_366038_4163114_free.jpg',555,1,'https://www.flipkart.com/nutty-gritties-pumpkin-seeds/p/itmesrcareugjsvj?pid=EDSE9XHRGZEKNNV6&affid=xaneemgmai'),(4,'Samsung Galaxy J3 Pro (Gold, 16 GB)  (2 GB RAM)','https://rukminim1.flixcart.com/image/832/832/j2ur3ww0-1/mobile/r/p/v/samsung-galaxy-j3-sm-j320fzdgins-original-imaeu4a9mctqur2s.jpeg',7990,0,'https://www.flipkart.com/samsung-galaxy-j3-pro-gold-16-gb/p/itmeu35jfryetgew?pid=MOBEU35JAZKVWRPV&srno=b_1_1&otracker=clp_banner_1_4.bannerX3.BANNER_mobiles_870f91e7-bdde-4d26-9b08-137d53a543a4_DesktopSite_wp3&lid=LSTMOBEU35JAZKVWRPVUXDI0L'),(5,'Samsung Galaxy J3 Pro (Black, 16 GB)  (2 GB RAM)','https://rukminim1.flixcart.com/image/832/832/j2ur3ww0-1/mobile/h/w/k/samsung-galaxy-j3-sm-j320fzdgins-original-imaeu4a9gpq9qjrm.jpeg',7990,1,'https://www.flipkart.com/samsung-galaxy-j3-pro-black-16-gb/p/itmeu8gy94ghhnxq?pid=MOBEU35JUQMQQHWK&srno=b_1_3&otracker=clp_banner_1_4.bannerX3.BANNER_mobiles_870f91e7-bdde-4d26-9b08-137d53a543a4_DesktopSite_wp3&lid=LSTMOBEU35JUQMQQHWK1HGEPZ'),(6,'Amir Enterprises SS-45 Seed  (20 Per Packet)','https://rukminim1.flixcart.com/image/832/832/plant-seed/v/b/e/amir-enterprises-20-ss-45-original-imae7sfrrdnccrdt.jpeg',79,0,'https://www.flipkart.com/amir-enterprises-ss-45-seed/p/itmeafdbc4m77gng?pid=PAEEAFDBKDNVMVBE&srno=s_1_3&otracker=search&lid=LSTPAEEAFDBKDNVMVBEYUSZKC&qH=b3188adab3f07e66'),(7,'Omaxe Brinjal Hybrid Makrikotta MK 24 50seeds*4pkts Seed  (1 per packet)','https://rukminim1.flixcart.com/image/832/832/plant-seed/x/3/u/omaxe-1-brinjal-hybrid-makrikotta-mk-24-50seeds-4pkts-original-imaefburzt7hxvhe.jpeg',250.5,1,'https://www.flipkart.com/omaxe-brinjal-hybrid-makrikotta-mk-24-50seeds-4pkts-seed/p/itmefbz3zqewbbgg?pid=PAEEFBZ3S9KVZX3U&srno=s_1_17&otracker=search&lid=LSTPAEEFBZ3S9KVZX3U45G9TJ&qH=9a394f2ed261cf83'),(8,'Chilli Z111 Smartwatch  (Black Strap Regular)','https://rukminim1.flixcart.com/image/832/832/smartwatch/5/f/j/sw104b-chilli-original-imaejtfvn3pfzhrd.jpeg',1697.4,0,'https://www.flipkart.com/chilli-z111-smartwatch/p/itmekzfzagegua3m?pid=SMWEKZFZM9CHZTWM&srno=s_1_26&otracker=search&lid=LSTSMWEKZFZM9CHZTWMTDNVGV&qH=ce64d4f0d6f71ff1'),(9,'Red Chilli 15.6 inch Laptop Backpack  (Blue, Black)','https://rukminim1.flixcart.com/image/832/832/laptop-bag/d/c/h/red-chilli-refueller-backpack-backpack020-laptop-backpack-red-original-imaerzemkj6ybqby.jpeg',699,1,'https://www.flipkart.com/red-chilli-15-6-inch-laptop-backpack/p/itmesf3xgghk3cgq?pid=LTBESF3X47YNHDCH&srno=s_1_46&otracker=search&lid=LSTLTBESF3X47YNHDCHMAADUJ&qH=ce64d4f0d6f71ff1'),(10,'Farm Seeds Hybrid Lady Finger Seed  (70 per packet)','https://rukminim1.flixcart.com/image/832/832/plant-seed/z/m/b/farm-seeds-70-hybrid-lady-finger-2-packet-seeds-original-imaefec5yvhgcmay.jpeg',109,1,'https://www.flipkart.com/farm-seeds-hybrid-lady-finger-seed/p/itmefegwff5sbfts?pid=PAEEFEGWXQMDDQJP&srno=s_1_6&otracker=search&lid=LSTPAEEFEGWXQMDDQJPHJ1H9F&qH=c8ff2f58e1b44f22'),(11,'The Rise of Sivagami : Bahubali : Before The Beginning  (English, Paperback, Anand Neelakantan)','https://rukminim1.flixcart.com/image/832/832/book/4/4/6/the-rise-of-sivagami-original-imaesazzthcgmmfh.jpeg',150,0,'https://www.flipkart.com/rise-sivagami-bahubali-before-beginning/p/itmeryjfuy2gdsdx?pid=9789386224446&srno=s_1_2&otracker=search&lid=LSTBOK97893862244469J2GCG&qH=7d8949bcbf85067f'),(12,'Dr. Morepen BP-11 BPOne Bp Monitor  (Blue, White)','https://rukminim1.flixcart.com/image/832/832/j16qm4w0/bp-monitor/t/z/5/dr-morepen-bpone-bp-11-original-imaes567mjptx8m5.jpeg',899,1,'https://www.flipkart.com/dr-morepen-bp-11-bpone-bp-monitor/p/itmes2thtgv4w2z9?pid=BPMES2TH5QEHRTZ5&lid=LSTBPMES2TH5QEHRTZ5TEXEC0&otracker=hp_omu_Deals+of+the+Day_2_Just+%E2%82%B9999_666d0752-0b1e-4508-99ef-eeb55173ed2a'),(13,'Data Structures Through C In Depth 2nd Revised and Updated Edition  (English, Paperback, Srivastava)','https://rukminim1.flixcart.com/image/832/832/book/4/1/1/data-structures-through-c-in-depth-original-imadk9zuhj9h3cbs.jpeg',330,1,'https://www.flipkart.com/data-structures-through-c-depth-2nd-revised-updated/p/itmdyueqgenjyage?pid=9788176567411&srno=s_1_9&otracker=search&lid=LSTBOK978817656741173K1BC&qH=37305dfb5e3ae8ec'),(14,'Data Structures using C 1st Edition  (English, Paperback, BALAGURUSAMY)','https://rukminim1.flixcart.com/image/832/832/j1b0xow0/book/5/4/7/data-structures-using-c-original-imaeswq97zzd2agn.jpeg',309,1,'https://www.flipkart.com/data-structures-using-c-1st/p/itmegmt277fzwsqy?pid=9781259029547&srno=s_1_5&otracker=search&lid=LSTBOK9781259029547C8ULCF&qH=37305dfb5e3ae8ec'),(15,'Srinivasa Ramanujan  (English, Sydney Srinivas)','https://rukminim1.flixcart.com/image/832/832/book/5/8/4/srinivasa-ramanujan-original-imae3exgnwrqtc6g.jpeg',152,0,'https://www.flipkart.com/srinivasa-ramanujan/p/itmdjdyfrsttefkg?pid=9788172867584'),(16,'Data Structures Through C In Depth 2nd Revised and Updated Edition  (English, Paperback, Srivastava)','https://rukminim1.flixcart.com/image/832/832/book/2/7/9/data-structures-and-algorithms-made-easy-original-imaenbv5ef5k7vz2.jpeg',23,0,'https://www.flipkart.com/data-structures-through-c-depth-2nd-revised-updated/p/itmdyueqgenjyage?pid=9788176567411&srno=s_1_9&otracker=search&lid=LSTBOK978817656741173K1BC&qH=37305dfb5e3ae8ec'),(17,'Moto E3 Power (Black, 16 GB)  (2 GB RAM)','https://rukminim1.flixcart.com/image/832/832/mobile/d/f/w/motorola-moto-e3-power-pa4c0009in-original-imaemj7xpcfhnu8r.jpeg',7499,1,'https://www.flipkart.com/moto-e3-power-black-16-gb/p/itmekgt2fbywqgcv?pid=MOBEKGT2HGDGADFW&srno=s_1_8&otracker=search&lid=LSTMOBEKGT2HGDGADFWP5NHBY&qH=532c28d5412dd75b'),(18,'Moto G5 Plus (Lunar Grey, 32 GB)  (4 GB RAM)','https://rukminim1.flixcart.com/image/832/832/mobile/5/b/f/motorola-moto-g5-plus-xt-1686-original-imaes3bzhs4thksp.jpeg',16999,1,'https://www.flipkart.com/moto-g5-plus-lunar-grey-32-gb/p/itmes2zjvwfncxxr?pid=MOBEQHMGMAUXS5BF&srno=s_1_11&otracker=search&lid=LSTMOBEQHMGMAUXS5BFVCF0ZO&qH=532c28d5412dd75b'),(19,'Data Structures Through C In Depth 2nd Revised and Updated Edition  (English, Paperback, Srivastava)','https://rukminim1.flixcart.com/image/832/832/book/4/1/1/data-structures-through-c-in-depth-original-imadk9zuhj9h3cbs.jpeg',330,1,'https://www.flipkart.com/data-structures-through-c-depth-2nd-revised-updated/p/itmdyueqgenjyage?pid=9788176567411&srno=s_1_9&otracker=search&lid=LSTBOK978817656741173K1BC&qH=37305dfb5e3ae8ec'),(20,'Data Structures Through C In Depth 2nd Revised and Updated Edition  (English, Paperback, Srivastava)','https://rukminim1.flixcart.com/image/832/832/book/4/1/1/data-structures-through-c-in-depth-original-imadk9zuhj9h3cbs.jpeg',330,0,'https://www.flipkart.com/data-structures-through-c-depth-2nd-revised-updated/p/itmdyueqgenjyage?pid=9788176567411&srno=s_1_9&otracker=search&lid=LSTBOK978817656741173K1BC&qH=37305dfb5e3ae8ec'),(21,'Data Structures Through C In Depth 2nd Revised and Updated Edition  (English, Paperback, Srivastava)','https://rukminim1.flixcart.com/image/832/832/book/4/1/1/data-structures-through-c-in-depth-original-imadk9zuhj9h3cbs.jpeg',234,0,'https://www.flipkart.com/data-structures-through-c-depth-2nd-revised-updated/p/itmdyueqgenjyage?pid=9788176567411&srno=s_1_9&otracker=search&lid=LSTBOK978817656741173K1BC&qH=37305dfb5e3ae8ec'),(22,'Puma Elsu v2 Mid CV IDP Mid Ankle Sneakers  (Black)','https://rukminim1.flixcart.com/image/832/832/shoe/q/n/a/black-white-elsu-v2-mid-cv-idp-puma-6-original-imaemphds6zf7x2x.jpeg',1595,1,'https://www.flipkart.com/puma-elsu-v2-mid-cv-idp-ankle-sneakers/p/itmemgjwnty4kwfv?pid=SHOEMGJWRMYUGGD6&srno=b_1_1&otracker=hp_omu_Deals%20of%20the%20Day_2_Minimum%2040%25%20Off_83201cf7-37e9-4143-a853-1053b126af45&lid=LSTSHOEMGJWRMYUGGD632ZT6X'),(23,'Puma Training Daypack (25l) 25 L Laptop Backpack  (Black)','https://rukminim1.flixcart.com/image/832/832/backpack/m/k/f/training-daypack-25l-7445901-laptop-backpack-puma-original-imaeqvmfqxc4ygus.jpeg',1566,0,'https://www.flipkart.com/puma-training-daypack-25l-25-l-laptop-backpack/p/itmeqr4gsg2sejj4?pid=BKPEQR4GYNTM8MKF&otracker=pp_reco_productRecommendation/crossSelling_3'),(24,'Redmi 3S (Silver, 16 GB)  (2 GB RAM)','https://rukminim1.flixcart.com/image/832/832/mobile/b/x/a/mi-redmi-3s-prime-na-original-imaeh6bdx2uhhu82.jpeg',1566,0,'https://www.flipkart.com/redmi-3s-silver-16-gb/p/itmekwzydupcqdyf?pid=MOBEKWZYHGPHHKVH&otracker=pp_pmu_v2_Recently+Viewed_2_desktopproductpage1_Redmi+3S+%28Silver%2C+16+GB%29_MOBEKWZYHGPHHKVH_gamificationAndPersonalisation/recentlyViewed_1'),(25,'Redmi 3S (Silver, 16 GB)  (2 GB RAM)','https://rukminim1.flixcart.com/image/832/832/mobile/b/x/a/mi-redmi-3s-prime-na-original-imaeh6bdx2uhhu82.jpeg',1566,1,'https://www.flipkart.com/redmi-3s-silver-16-gb/p/itmekwzydupcqdyf?pid=MOBEKWZYHGPHHKVH&otracker=pp_pmu_v2_Recently+Viewed_2_desktopproductpage1_Redmi+3S+%28Silver%2C+16+GB%29_MOBEKWZYHGPHHKVH_gamificationAndPersonalisation/recentlyViewed_1'),(26,'Noise Back Cover for Mi Redmi 3S  (Multicolor)','https://rukminim1.flixcart.com/image/832/832/cases-covers/back-cover/p/h/h/noise-1p-c-redmi3s-gd-632-peacockfeather-uv-original-imaehbwyyh5492es.jpeg',344,1,'https://www.flipkart.com/noise-back-cover-mi-redmi-3s/p/itmehcuawmdcxwsy?pid=ACCEHCUAYZFSYPWS&otracker=pp_reco_productRecommendation/crossSelling_3'),(27,'Noise Back Cover for Mi Redmi 3S  (Multicolor)','https://rukminim1.flixcart.com/image/832/832/cases-covers/back-cover/p/h/h/noise-1p-c-redmi3s-gd-632-peacockfeather-uv-original-imaehbwyyh5492es.jpeg',344,1,'https://www.flipkart.com/noise-back-cover-mi-redmi-3s/p/itmehcuawmdcxwsy?pid=ACCEHCUAYZFSYPWS&otracker=pp_reco_productRecommendation/crossSelling_3'),(28,'Noise Back Cover for Mi Redmi 3S  (Multicolor)','https://rukminim1.flixcart.com/image/832/832/cases-covers/back-cover/r/2/h/noise-1p-c-redmi3s-tp-38-gajananddesign-uv-original-imaehbvzjeq9hb8s.jpeg',349,0,'https://www.flipkart.com/noise-back-cover-mi-redmi-3s/p/itmehcu36c4khkwt?pid=ACCEHCU3BGVYTCH3&otracker=pp_reco_productRecommendation/similar_3'),(29,'Boss Baby (Blu-Ray)  (Blu-ray English)','https://rukminim1.flixcart.com/image/832/832/movie/k/s/d/2017-blu-ray-excel-home-videos-english-boss-baby-blu-ray-original-imaes7bhrnrrr9bd.jpeg?',899,1,'https://www.flipkart.com/boss-baby-blu-ray/p/itmes97bzyhgpunm?pid=MIEES97BFBPVAKSD&srno=b_1_2&otracker=nmenu_sub_Books%20and%20More_0_Movies%20on%20Pre-order&lid=LSTMIEES97BFBPVAKSDGYUJQ5'),(30,'Bolt 3D  (3D Blu-ray English)','https://rukminim1.flixcart.com/image/832/832/av-media/movies/q/s/z/bolt-3d-blu-ray-original-imadyw8ynjkgrt7f.jpeg',999,0,'https://www.flipkart.com/bolt-3d/p/itmdkzsfaznyzsfr?pid=AVMDYV4H2TXKPQSZ&otracker=pp_reco_productRecommendation/similar_35'),(31,'SYGA Analog Wall Clock  (Black, Without Glass)','https://rukminim1.flixcart.com/image/832/832/wall-clock/v/9/u/syga-black-circles-wall-clock-stickers-wall-clock-002-analog-original-imaeqk9zbtbs8uh6.jpeg',379,1,'https://www.flipkart.com/syga-analog-wall-clock/p/itmeqns9agvppgfm?pid=WCKEQNS9N75DGV9U&srno=b_1_22&otracker=nmenu_sub_Home%20and%20Furniture_0_Clocks&lid=LSTWCKEQNS9N75DGV9UFMF61J');
+/*!40000 ALTER TABLE `products` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` bigint(20) NOT NULL,
+  `fname` varchar(50) NOT NULL,
+  `lname` varchar(50) NOT NULL,
+  `uname` varchar(20) NOT NULL,
+  `email` text NOT NULL,
+  `contact` bigint(12) NOT NULL,
+  `profile_pic` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'Rishikesh','Agrawani','hygull','rishikesh0014051992@gmail.com',917353787704,'https://cdn4.iconfinder.com/data/icons/rcons-user/32/user_group_users_accounts_contacts-512.png'),(2,'Sandeep','E','sandeep','sandeepeswar8@gmail.com',919739040038,'https://cdn4.iconfinder.com/data/icons/eldorado-user/40/user-512.png'),(3,'Darshan','Sidar','darshan','sidardarshan@gmail.com',917996917565,'https://cdn4.iconfinder.com/data/icons/rcons-user/32/child_boy-512.png'),(4,'Surendra','Prajapat','surendra','surendrakgadwal@gmail.com',918385894407,'https://cdn4.iconfinder.com/data/icons/rcons-user/32/account_male-512.png'),(5,'Mukesh','Jakhar','mukesh','mjakhar.kjakhar@gmail.com',919772254140,'https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-circle-512.png');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-06-03 17:05:39
