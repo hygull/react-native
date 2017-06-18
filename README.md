@@ -329,9 +329,18 @@ npm install --save react-navigation
 ```
 # Hidable view
 
-Visie [here](https://www.npmjs.com/package/react-native-hideable-view)
+Visit [here](https://www.npmjs.com/package/react-native-hideable-view)
 
 ```javascript
 npm install --save react-native-hideable-view
 ```
+
+# md5 
+
+```
+npm install react-native-md5 --save
+```
+
+Visit [here](https://www.npmjs.com/package/react-native-md5) to see the usage examples.
+
 
