@@ -16,6 +16,7 @@
     "react-native-image-slider": "^1.1.5",
     "react-native-maps-google": "^1.1.4",
     "react-native-md5": "^1.0.0",
+    "react-native-phone-input": "^0.1.8",
     "react-native-video": "^1.0.0",
     "react-navigation": "^1.0.0-beta.9"
   },

@@ -343,4 +343,18 @@ npm install react-native-md5 --save
 
 Visit [here](https://www.npmjs.com/package/react-native-md5) to see the usage examples.
 
+# KeyboardAvoidingView
 
+```
+npm i react-native-keyboard-avoiding-view
+```
+
+Visit [here](https://www.npmjs.com/package/react-native-keyboard-avoiding-view) to see the usage examples.
+
+# React Native Phone Input
+
+```
+npm i react-native-phone-input --save
+```
+
+Visit [here](https://www.npmjs.com/package/react-native-phone-input) to see the usage examples.

@@ -5,6 +5,7 @@ import { AppRegistry, Text, View, Button, Image, ScrollView, TextInput,
 import { StackNavigator } from "react-navigation"
 import Cookie from "react-native-cookie"
 import md5 from "react-native-md5"
+import PhoneInput from "react-native-phone-input"
 // import Video  from "react-native-video"
 var Video = require("react-native-video")
 
@@ -22,22 +23,21 @@ class CabBookingHomeScreen extends React.Component {
 		const { navigate } = this.props.navigation
 
 		return 	<View style={{backgroundColor: "#d8f3d8", flex: 1, alignItems: "center", justifyContent: "flex-start"}}>
-					<Image source={require("../../img/car_gif3.gif")}  style={{ height: 200, width: 375}}/>
+					<Image source={require("../../img/car_gif4.gif")}  style={{ height: 200, width: 375}}/>
 					<Text style={{color: "#34495e",fontWeight: "bold", fontSize: 35, marginTop:10}}> CabBooking App</Text>
 					<Text style={{color: "navy", fontSize: 15,}}>An {" "}
-						<Text style={{color: "gray", fontSize: 14, fontWeight: "bold"}}>Indian app to book taxies/cabs</Text>
+						<Text style={{color: "#777", fontSize: 14, fontWeight: "bold"}}>Indian app to book taxies/cabs</Text>
 					
 					</Text>
-
-					
-						
-						<TouchableOpacity style={styles.buttonStyle}  onPress={() => navigate("SignUp")}>
+					<TouchableOpacity style={styles.buttonStyle}  onPress={() => navigate("SignUp")}>
 							<Text style={styles.textStyle}> 
 								Book your ride	
 							</Text>
-						</TouchableOpacity>
+					</TouchableOpacity>
 						
-					
+					<Text style={{marginTop:200, fontSize:10}}>Copyright© June, 2017
+					</Text>
+					<Text style={{fontSize:10}}>Bangalore, Karnataka (India)</Text>
 				</View>
 
 	}
@@ -105,9 +105,9 @@ class CabBookingScreen extends React.Component {
 							placeholder="Enter your destination"
 							style={styles.text_input}
 						/>
-						<TouchableOpacity style={styles.booknow}>
-							<Text style={styles.booknow_txt}>
-								Book Now
+						<TouchableOpacity style={styles.buttonStyle}  onPress={() => navigate("SignUp")}>
+							<Text style={styles.textStyle}> 
+								Book now
 							</Text>
 						</TouchableOpacity>
 				</View>
@@ -327,7 +327,7 @@ class SignUpScreen extends React.Component {
 		// fetch("http://127.0.0.1:8080/create/",{method: "POST", headers: {"Content-Type": "application/x-www-form-urlencoded", "Accept": "application/json"} ,body: 	JSON.stringify({email: this.state.email}) })
 		// fetch("http://127.0.0.1:8080/v1/login/",{method: "POST", headers: {"Content-Type": "application/x-www-form-urlencoded", "Accept": "application/json"} ,body: 	JSON.stringify({"mob": this.state.number, "app_key": "a9316ba8085e74e780444c0d598d7bbe"}) }) //Rishikesh
 		// fetch("http://127.0.0.1:8080/v1/login/",{method: "POST", headers: {"Content-Type": "application/x-www-form-urlencoded", "Accept": "application/json"} ,body: 	JSON.stringify({"mob": this.state.number, "app_key" : "04b6290958eb07b8628d13e7aa4fee9d"}) }) //Rathnakara Sir
-				fetch("http://127.0.0.1:8080/v1/login/",{method: "POST", headers: {"Content-Type": "application/x-www-form-urlencoded", "Accept": "application/json"} ,body: 	JSON.stringify({"mob": this.state.number, "app_key": md5.hex_md5( this.state.number+"offlinetrend")}) }) //all
+		fetch("http://127.0.0.1:8080/v1/login/",{method: "POST", headers: {"Content-Type": "application/x-www-form-urlencoded", "Accept": "application/json"} ,body: 	JSON.stringify({"mob": this.state.number, "app_key": md5.hex_md5( this.state.number.slice(3)+"offlinetrend")}) }) //all
 		.then((response) => response.json())
 		.then((response) => { 
 			console.log("status",response.success, typeof response.success)
@@ -349,7 +349,7 @@ class SignUpScreen extends React.Component {
 				return
 			} else {
 				console.log(response)
-				AlertIOS.alert(JSON.stringify("Error Message: "+response)) 
+				AlertIOS.alert("Error Message: "+response.message) 
 			}
 		})
 		.catch((error) => {
@@ -362,16 +362,24 @@ class SignUpScreen extends React.Component {
 			<View style={styles.login_container_view}>
 					
 					<Image source={require('../../img/USER2.png')} style={styles.pic_small}/>
+						<Text> Please Enter your 10 digits mobile number</Text>
+					
+						
+						<PhoneInput ref="phone" 
+								textProps= {{placeholder: 'Telephone number'}}
+								initialCountry="in"
+								cancelText="Cancel"
+								value="91"
+								onChangePhoneNumber={(number) => this.setState({number})}
+								style={{
+									height: 40, 
+									backgroundColor: "#ffffe6", 
+									
+									margin: 10,
+									padding: 5,
+									borderRadius: 5,
+								}}/>
 
-						<TextInput
-							placeholder="Mobile Number"
-							autoCapitalize="none"
-							placeholderTextColor="#bdc3c7"
-							returnKeyType="next"
-							style={styles.text_input}
-							autoFocus
-							onChangeText={(number) => this.setState({number})}
-						/>
 						<TouchableOpacity style={styles.login} onPress={() => { this.getOTP() }}>
 							<Text style={styles.login_txt}>
 								Login
